@@ -12,11 +12,17 @@ boot_eloquent(__DIR__ . '/src/conf/conf.ini');
 
 $app = new \Slim\App;
 $app->get('/hello/{name}', function (Request $request, Response $response, array $args) {
-    $q1 = Item::select('nom')->where('id','=', 1);
-    $item = $q1->first();
-    $name = $item->nom;
-    //$name = $args['name'];
+    $name = $args['name'];
     $response->getBody()->write("<h1>Hello, $name</h1>");
+    return $response;
+});
+
+$app->get('/vue/{id}', function (Request $request, Response $response,array $args){
+    $id = $args['id'];
+    $req = Item::select('nom')->where('id','=',$id );
+    $item = $req->first();
+    $name = $item->nom;
+    $response->getBody()->write("<h2>L'object à l'id $id est $name</h2>");
     return $response;
 });
 
@@ -24,6 +30,16 @@ $app->get('/', function (Request $request, Response $response, array $args) {
     $response->getBody()->write("<h1>Welcome</h1>");
     return $response;
 });
+
+
+$app->get('/item/{id}', function (Request $request, Response $response, array $args) {
+    $valeur = $args['id'];
+    $item = Item::find( $valeur ) ;
+    $vue = VueParticipant( [ $item ] ) ;
+    $vue->render( 3 ) ;
+    return $vue;
+});
+
 
 
 
