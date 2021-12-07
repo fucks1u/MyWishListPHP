@@ -20,6 +20,13 @@ $app->get('/hello/{name}', function (Request $request, Response $response, array
     return $response;
 });
 
+$app->get('/', function (Request $request, Response $response, array $args) {
+    $response->getBody()->write("<h1>Welcome</h1>");
+    return $response;
+});
+
+
+
 $app->run();
 /*
 Item::get();
