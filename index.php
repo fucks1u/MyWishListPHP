@@ -10,11 +10,20 @@ require __DIR__ .'/src/conf/conf.php';
 
 boot_eloquent(__DIR__ . '/src/conf/conf.ini');
 
-$app = new \Slim\App;
-$app->get('/hello/{name}', function (Request $request, Response $response, array $args) {
-    $name = $args['name'];
+$c = new \Slim\Container(['settings'=>[
+    'displayErrorDetails'=>true
+]]);
+
+$app = new \Slim\App($c);
+
+$app->get('/item/{id}', function (Request $request, Response $response, array $args) {
+
+    $c = new wishlist\controller\ItemController($this);
+    return $c->getItem($request,$response,$args);
+
+    /*$name = $args['name'];
     $response->getBody()->write("<h1>Hello, $name</h1>");
-    return $response;
+    return $response;*/
 });
 
 $app->get('/vue/{id}', function (Request $request, Response $response,array $args){
@@ -31,7 +40,7 @@ $app->get('/', function (Request $request, Response $response, array $args) {
     return $response;
 });
 
-
+/*
 $app->get('/item/{id}', function (Request $request, Response $response, array $args) {
     $valeur = $args['id'];
     $item = Item::find( $valeur ) ;
@@ -39,6 +48,11 @@ $app->get('/item/{id}', function (Request $request, Response $response, array $a
     $vue->render( 3 ) ;
     return $vue;
 });
+
+$app->get('/items/{item}[/]', function ($rq,$rs,$args){
+    $c = new \wishlist\controller\ItemController($args);
+    return $c->render();
+});*/
 
 
 
