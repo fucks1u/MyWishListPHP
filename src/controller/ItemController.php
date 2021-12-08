@@ -25,7 +25,7 @@ public function hello(Request $request, Response $response, array $args) : Respo
     public function getItem($rq, $rs, $args) : Response{
         $id = $args['id'];
         $item = Item::where('id','=',$args['id'])->first();
-        $v = new wishlist\vue\VueParticipant($item);
+        $v = new \wishlist\vue\VueParticipant([$item]);
         //$rs->getBody()->write($item);
         $rs->getBody()->write($v->render(3));
         return $rs;
