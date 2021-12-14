@@ -10,18 +10,26 @@ class VueParticipant{
     }
 
     public function render(int $nb) : mixed{
+        $content = '';
+        $desc = '';
         switch($nb){
             case 1 : {
-
+            //Affichage de la liste
+            $listeitem = $this->array[0];
+            foreach($listeitem as $value){
+                $content = $content ."\n" .'<h1>' .$value->titre .'</h1>';
+            }
+                break;
             }
             case 2 : {
-                //affichaffe liste de souhaits et items
+                //Affichage liste de souhaits et items
                 break;
             }
 
             case 3 : {
-                $name = $this->array['nom'];
-                $content = '<h1>' .$name .'</h1>';
+                $item = $this->array[0];
+                $content = '<h1>' .$item->nom .'</h1>';
+                $desc = '<p>' .$item->descr .'</p>';
                 break;
             }
         }
@@ -31,6 +39,7 @@ class VueParticipant{
 <body>
 <div class="content">
  $content
+ $desc
 </div>
 </body><html>
 END ;
