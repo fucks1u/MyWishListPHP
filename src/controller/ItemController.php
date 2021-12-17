@@ -5,6 +5,7 @@ namespace wishlist\controller;
 use wishlist\modele\Item;
 use \Psr\Http\Message\ResponseInterface as Response;
 use \Psr\Http\Message\ServerRequestInterface as Request;
+use wishlist\modele\Liste;
 
 class ItemController{
 
@@ -26,19 +27,18 @@ public function hello(Request $request, Response $response, array $args) : Respo
         $id = $args['id'];
         $item = Item::where('id','=',$args['id'])->first();
         $v = new \wishlist\vue\VueParticipant([$item]);
-        //$rs->getBody()->write($item);
         $rs->getBody()->write($v->render(3));
         return $rs;
     }
 
 
-/*
-    public function listItem($rq, $rs, $args){
-        $list = Item::OrderBy('titre')->get();
-        $v = new \VueParticipant($list);
-        $rs->getBody()->write($v->render(3));
+    public function getList($rq, $rs, $args){
+        $list = Liste::OrderBy('titre')->get();
+        $v = new \wishlist\vue\VueParticipant([$list]);
+        //$rs->getBody()->write($list);
+        $rs->getBody()->write($v->render(1));
         return $rs;
     }
-*/
+
 
 }
