@@ -33,12 +33,21 @@ public function hello(Request $request, Response $response, array $args) : Respo
 
 
     public function getList($rq, $rs, $args){
-        $list = Liste::OrderBy('titre')->get();
+        $list = Liste::where('no', '=',$args['id'])->get();
         $v = new \wishlist\vue\VueParticipant([$list]);
-        //$rs->getBody()->write($list);
+
         $rs->getBody()->write($v->render(1));
         return $rs;
     }
+
+    public function getListItem($rq, $rs, $args){
+        $list = Liste::where('no', '=',$args['id'])->with('items')->first();
+        $v = new \wishlist\vue\VueParticipant([$list]);
+        $rs->getBody()->write($v->render(2));
+        return $rs;
+    }
+
+
 
 
 }

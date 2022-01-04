@@ -15,14 +15,23 @@ class VueParticipant{
         switch($nb){
             case 1 : {
             //Affichage de la liste
-            $listeitem = $this->array[0];
-            foreach($listeitem as $value){
+            $liste = $this->array[0];
+            foreach($liste as $value){
                 $content = $content ."\n" .'<h1>' .$value->titre .'</h1>';
+                $content = $content ."\n" .'<h2>' .$value->description .'</h2>';
+                $content = $content ."\n" .'<p>Attention la liste expire le : ' .$value->expiration .'</p>';
             }
                 break;
             }
             case 2 : {
                 //Affichage liste de souhaits et items
+                $list = $this->array[0];
+                $items = $list->items;
+                $content = '<h1>' .$list->titre .'</h1>';
+                $content = $content .'<ul>';
+                foreach($items as $value){
+                    $content = $content ."\n" .'<li>' .$value->nom .'</li>';
+                }
                 break;
             }
 
