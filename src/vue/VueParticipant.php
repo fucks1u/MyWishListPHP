@@ -9,7 +9,7 @@ class VueParticipant{
         $this->array = $a;
     }
 
-    public function render(int $nb) : mixed{
+    public function render(int $nb,string $base) : mixed{
         $content = '';
         $desc = '';
         switch($nb){
@@ -38,8 +38,8 @@ class VueParticipant{
             case 3 : {
                 $item = $this->array[0];
                 $content = '<h1>' .$item->nom .'</h1>';
-                $desc = '<p>' .$item->descr .'</p>';
-                $im = '<img src=../../img/dinosaur.jpg">';
+                $desc = '<p>Description : ' .$item->descr .'</p>';
+                $im = '<img src="' .$base .'/img/'.$item->nom .'.jpg">';
                 break;
             }
         }

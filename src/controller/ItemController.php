@@ -24,10 +24,11 @@ public function hello(Request $request, Response $response, array $args) : Respo
 }*/
 
     public function getItem($rq, $rs, $args) : Response{
+        $base = $rq->getUri()->getBasePath();
         $id = $args['id'];
         $item = Item::where('id','=',$args['id'])->first();
         $v = new \wishlist\vue\VueParticipant([$item]);
-        $rs->getBody()->write($v->render(3));
+        $rs->getBody()->write($v->render(3,$base));
         return $rs;
     }
 
@@ -35,7 +36,6 @@ public function hello(Request $request, Response $response, array $args) : Respo
     public function getList($rq, $rs, $args){
         $list = Liste::where('no', '=',$args['id'])->get();
         $v = new \wishlist\vue\VueParticipant([$list]);
-
         $rs->getBody()->write($v->render(1));
         return $rs;
     }
