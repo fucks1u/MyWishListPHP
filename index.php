@@ -26,10 +26,22 @@ $app->get('/item/{id}', function (Request $request, Response $response, array $a
     return $response;*/
 });
 
-$app->get('/listes', function (Request $request, Response $response,array $args){
+$app->get('/liste/{id}', function (Request $request, Response $response,array $args){
     $c = new \wishlist\controller\ItemController($this);
     return $c->getList($request,$response,$args);
 });
+
+$app->get('/listeItems/{id}', function (Request $request, Response $response,array $args){
+    $c = new \wishlist\controller\ItemController($this);
+    return $c->getListItem($request,$response,$args);
+});
+
+//Créer une liste
+$app->get('/formlist', function (Request $request, Response $response,array $args){
+    $c = new \wishlist\controller\ItemController($this);
+    return $c->getListItem($request,$response,$args);
+});
+
 
 /*
  * page d'acceuil

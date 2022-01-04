@@ -8,4 +8,8 @@ class Liste extends \Illuminate\Database\Eloquent\Model
     protected $primaryKey = 'no';
     public $timestamps = 'false';
 
+    public function items() : \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(Item::class,'liste_id');
+    }
 }
