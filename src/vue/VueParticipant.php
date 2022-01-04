@@ -34,11 +34,12 @@ class VueParticipant{
                 }
                 break;
             }
-
+            //Affichage d'un item
             case 3 : {
                 $item = $this->array[0];
                 $content = '<h1>' .$item->nom .'</h1>';
                 $desc = '<p>' .$item->descr .'</p>';
+                $im = '<img src=../../img/dinosaur.jpg">';
                 break;
             }
         }
@@ -49,6 +50,7 @@ class VueParticipant{
 <div class="content">
  $content
  $desc
+ $im
 </div>
 </body><html>
 END ;
