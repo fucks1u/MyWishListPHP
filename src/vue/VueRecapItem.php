@@ -21,12 +21,12 @@ public function render() : mixed{
         <meta charset="utf-8">
     </head>
     <body>
-        <p>Dans le formulaire précédent, vous avez fourni les
-        informations suivantes :</p>
+        <h2>Dans le formulaire précédent, vous avez fourni les
+        informations suivantes :</h2>
         
-        <p>Nom :$nom</p>
-        <p>Prix :$prix</p>
-        <p>Description :$desc</p>
+        <p><b>Nom : </b>$nom</p>
+        <p><b>Prix : </b>$prix</p>
+        <p><b>Description : </b>$desc</p>
     </body>
 </html>
 END;
