@@ -7,7 +7,13 @@ class VueFormulaireItem{
 
 
         $html = <<<END
-<!DOCTYPE html> <html>
+<!DOCTYPE html> 
+ <head>
+      <title>Création Item</title>
+      <meta charset="utf-8">
+      <link rel="stylesheet" href="css/style.css">
+    </head>
+    <body>
  <form action="/creationItem" method="post">
     <div>
         <label for="name">Nom :</label>
