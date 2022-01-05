@@ -7,6 +7,7 @@ use \Psr\Http\Message\ResponseInterface as Response;
 use \Psr\Http\Message\ServerRequestInterface as Request;
 use wishlist\modele\Liste;
 use wishlist\vue\VueFormulaireItem;
+use wishlist\vue\VueRecapItem;
 
 class ItemController{
 
@@ -48,12 +49,28 @@ public function hello(Request $request, Response $response, array $args) : Respo
         return $rs;
     }
 
+    /*
+     * Methode permettant d'afficher visuellement le formulaire
+     */
     public function createItem($rq,$rs,$args){
         //$list = Item::query('SELECT * FROM ITEM');
         $v = new VueFormulaireItem();
         $rs->getBody()->write($v->render());
         return $rs;
     }
+
+    /*
+     * Methode permettant de recuperer les données présentes dans le formulaire
+     * et egalement l'afficher sur une page annexe
+     */
+    public function resumeItem($rq,$rs,$args){
+        $data = $rq->getParsedBody();
+        $v = new VueRecapItem($data);
+        $rs->getBody()->write($v->render());
+        return $rs;
+    }
+
+    //ajouter les données dans la base de donnée (a faire)
 
 
 

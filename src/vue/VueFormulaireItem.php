@@ -15,7 +15,7 @@ class VueFormulaireItem{
     </head>
     <body>
     <div id="container">
- <form action="/creationItem" method="post">
+ <form action="/TD-WebServeur/MyWishListPHP/formlist" method="post">
    <h1>Création d'un Item</h1>
 
         <label for="name"><b>Nom de l'Item :</b></label>

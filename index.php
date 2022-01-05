@@ -36,10 +36,22 @@ $app->get('/listeItems/{id}', function (Request $request, Response $response,arr
     return $c->getListItem($request,$response,$args);
 });
 
-//Créer une liste
+/*
+ * Methode GET pour envoyer le formulaire dans la classe ItemController
+ * et utilisation de la fonction createItem
+ */
 $app->get('/formlist', function (Request $request, Response $response,array $args){
     $c = new \wishlist\controller\ItemController($this);
     return $c->createItem($request,$response,$args);
+});
+
+/*
+ * Methode POST pour récupérer les données du formulaire apres l'appui du bouton valider
+ * et appel de la fonction resumeItem
+ */
+$app->post('/formlist',function(Request $request, Response $response, array $args){
+    $c = new \wishlist\controller\ItemController($this);
+    return $c->resumeItem($request,$response,$args);
 });
 
 
