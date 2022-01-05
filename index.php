@@ -39,7 +39,7 @@ $app->get('/listeItems/{id}', function (Request $request, Response $response,arr
 //Créer une liste
 $app->get('/formlist', function (Request $request, Response $response,array $args){
     $c = new \wishlist\controller\ItemController($this);
-    return $c->getListItem($request,$response,$args);
+    return $c->createItem($request,$response,$args);
 });
 
 

@@ -6,6 +6,7 @@ use wishlist\modele\Item;
 use \Psr\Http\Message\ResponseInterface as Response;
 use \Psr\Http\Message\ServerRequestInterface as Request;
 use wishlist\modele\Liste;
+use wishlist\vue\VueFormulaireItem;
 
 class ItemController{
 
@@ -44,6 +45,13 @@ public function hello(Request $request, Response $response, array $args) : Respo
         $list = Liste::where('no', '=',$args['id'])->with('items')->first();
         $v = new \wishlist\vue\VueParticipant([$list]);
         $rs->getBody()->write($v->render(2));
+        return $rs;
+    }
+
+    public function createItem($rq,$rs,$args){
+        //$list = Item::query('SELECT * FROM ITEM');
+        $v = new VueFormulaireItem();
+        $rs->getBody()->write($v->render());
         return $rs;
     }
 
