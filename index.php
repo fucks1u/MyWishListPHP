@@ -66,4 +66,7 @@ $app->get('/', function (Request $request, Response $response, array $args) {
 
 $app->run();
 
+/*
+ * a faire : aspect visuel de la page d'acceuil
+ */
 
