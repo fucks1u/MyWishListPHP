@@ -60,7 +60,7 @@ $app->post('/formlist',function(Request $request, Response $response, array $arg
  */
 $app->get('/', function (Request $request, Response $response, array $args) {
     $vIndex = new \wishlist\vue\VueIndex();
-    $response->getBody()->write($vIndex->render());
+    $response->getBody()->write(VueIndex::render());
     return $response;
 });
 //poser question au prof pour le controleur, si il en faut que 1 ou alors dissocier

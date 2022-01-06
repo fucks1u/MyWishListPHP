@@ -9,10 +9,12 @@ class VueIndex
     //remplacer l'appel ci-dessous avec la fonction du get dans le controller
     //vue avec un input text et bouton valider
     //padding ou margin pour le textarea (comme les input text du haut)
-    public function render():mixed{
+
+    //ancien : public function render():mixed{
+    public static function render():string{
 
 
-        $html = <<<END
+        return <<<END
 <!DOCTYPE html> 
  <head>
       <title>MyWishList</title>
@@ -33,6 +35,5 @@ class VueIndex
 </body>
 </html>
 END;
-        return $html;
-    }
+}
 }
