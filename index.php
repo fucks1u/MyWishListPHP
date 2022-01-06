@@ -59,8 +59,14 @@ $app->post('/formlist',function(Request $request, Response $response, array $arg
  * page d'acceuil
  */
 $app->get('/', function (Request $request, Response $response, array $args) {
-    $response->getBody()->write("<h1>Welcome</h1>");
+    $vIndex = new \wishlist\vue\VueIndex();
+    $response->getBody()->write($vIndex->render());
     return $response;
+});
+//poser question au prof pour le controleur, si il en faut que 1 ou alors dissocier
+$app->post('/',function(Request $request, Response $response, array $args){
+    $c = new \wishlist\controller\ItemController($this);
+    return $c->resumeItem($request,$response,$args);
 });
 
 
