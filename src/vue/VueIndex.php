@@ -4,7 +4,10 @@ namespace wishlist\vue;
 
 class VueIndex
 {
-
+    //a faire :
+    //creer une vue pour choisir un item et une vue pour la liste
+    //remplacer l'appel ci-dessous avec la fonction du get dans le controller
+    //vue avec un input text et bouton valider
     public function render():mixed{
 
 
@@ -19,8 +22,6 @@ class VueIndex
 
 <h1><strong><u>MyWishList</u></strong></h1>
         <form action="controller/ItemController.php">
-        //creer une vue pour choisir un item et une vue pour la liste
-        //remplacer l'appel ci-dessous avec la fonction du get dans le controller
             <input type="submit" name="b_liste" value="Listes" onclick="fliste()" />
             <input type="submit" name="b_item" value="Items" onclick="fitem()" />
         </form>
