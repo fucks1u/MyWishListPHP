@@ -8,6 +8,7 @@ class VueIndex
     //creer une vue pour choisir un item et une vue pour la liste
     //remplacer l'appel ci-dessous avec la fonction du get dans le controller
     //vue avec un input text et bouton valider
+    //padding ou margin pour le textarea (comme les input text du haut)
     public function render():mixed{
 
 
