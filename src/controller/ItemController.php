@@ -2,12 +2,16 @@
 
 namespace wishlist\controller;
 
+use PDOException;
 use wishlist\modele\Item;
 use \Psr\Http\Message\ResponseInterface as Response;
 use \Psr\Http\Message\ServerRequestInterface as Request;
 use wishlist\modele\Liste;
 use wishlist\vue\VueFormulaireItem;
+use wishlist\vue\VueFormulaireListe;
+use wishlist\vue\VueListeItem;
 use wishlist\vue\VueRecapItem;
+use wishlist\vue\VueRecapInvalide;
 
 class ItemController{
 
@@ -34,11 +38,18 @@ public function hello(Request $request, Response $response, array $args) : Respo
         return $rs;
     }
 
+    public function createList($rq,$rs,$args){
+        $v = new VueFormulaireListe();
+        $rs->getBody()->write($v->render());
+        return $rs;
+}
 
     public function getList($rq, $rs, $args){
+        $base = $rq->getUri()->getBasePath();
+        $id = $args['id'];
         $list = Liste::where('no', '=',$args['id'])->get();
         $v = new \wishlist\vue\VueParticipant([$list]);
-        $rs->getBody()->write($v->render(1));
+        $rs->getBody()->write($v->render(1,$base));
         return $rs;
     }
 
@@ -64,14 +75,41 @@ public function hello(Request $request, Response $response, array $args) : Respo
      * et egalement l'afficher sur une page annexe
      */
     public function resumeItem($rq,$rs,$args){
+        //récupération des données du post
         $data = $rq->getParsedBody();
-        $v = new VueRecapItem($data);
-        $rs->getBody()->write($v->render());
+        $nom = $data['item_name'];
+        $description = $data['item_description'];
+        $tarif = $data['item_price'];
+
+        //filtrage des données du post
+        if(!filter_var($nom,FILTER_SANITIZE_STRING)||!filter_var($description
+                ,FILTER_SANITIZE_STRING)||!filter_var($tarif,FILTER_SANITIZE_NUMBER_INT))
+        {
+            $v = new VueRecapInvalide($data);
+            $rs->getBody()->write($v->render());
+        } else {
+            //ajout dans la base de donnée
+            try{
+                Item::insert(['nom'=>$nom,'descr'=>$description,'tarif'=>$tarif]);
+            } catch(PDOException $e){
+                throw new DBException('Ajout impossible : ' .$e->getMessage());
+            }
+            //création de la vue racapitulative
+            $v = new VueRecapItem($data);
+            $rs->getBody()->write($v->render());
+
+        }
         return $rs;
     }
+
 // filtrer les données remplies dans les champs
     //ajouter les données dans la base de donnée (a faire)
 
+public function showListPanel($rq,$rs,$args){
+    $v = new VueListeItem();
+    $rs->getBody()->write($v->render());
+    return $rs;
+}
 
 
 
