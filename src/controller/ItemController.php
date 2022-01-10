@@ -69,7 +69,7 @@ public function hello(Request $request, Response $response, array $args) : Respo
         $rs->getBody()->write($v->render());
         return $rs;
     }
-
+// filtrer les données remplies dans les champs
     //ajouter les données dans la base de donnée (a faire)
 
 
