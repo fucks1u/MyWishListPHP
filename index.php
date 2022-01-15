@@ -29,6 +29,12 @@ $app->post('/list/view', function (Request $request, Response $response,array $a
     return $c->getList($request,$response,$args);
 });
 
+$app->post('list/view/message', function (Request $request, Response $response,array $args){
+    $c = new \wishlist\controller\Controller($this);
+    return $c->getMessageList($request,$response,$args);
+});
+
+
 $app->get('/list/createList', function (Request $request, Response $response,array $args){
     $c = new \wishlist\controller\Controller($this);
     return $c->getFormList($request,$response,$args);
@@ -43,6 +49,11 @@ $app->post('/list/createList', function (Request $request, Response $response,ar
 $app->get('list/addItem', function (Request $request, Response $response,array $args){
     $c = new \wishlist\controller\Controller($this);
     return $c->getFormItem($request,$response,$args);
+});
+
+$app->get('/list/message', function (Request $request, Response $response,array $args){
+    $c = new \wishlist\controller\Controller($this);
+    return $c->getMessageList($request,$response,$args);
 });
 
 /*

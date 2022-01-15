@@ -99,6 +99,11 @@ class Controller{
         return $rs;
     }
 
+    public function getMessageList($rq, $rs, $args){
+        $v = new \wishlist\vue\VueMessageListe();
+        $rs->getBody()->write($v->render());
+        return $rs;
+    }
 
     /*
      * ------------------------------------------------------------

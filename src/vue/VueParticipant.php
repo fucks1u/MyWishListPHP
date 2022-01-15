@@ -61,6 +61,11 @@ class VueParticipant{
  $desc
  $im
 </div>
+<form>
+    <a href="message">
+        <input type="button" value="Ajouter un message">
+    </a>
+</form>
 </body><html>
 END ;
 return $html;
