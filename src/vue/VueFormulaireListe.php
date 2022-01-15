@@ -14,18 +14,18 @@ class VueFormulaireListe{
     </head>
     <body>
     <div id="container">
- <form action="list/createList" method="post">
+ <form action="createList" method="post">
    <h1>Création d'une liste</h1>
 
         <label for="titre"><b>Titre de la liste:</b></label>
-        <input type="text" id="title" name="title_list" placeholder="Ma Liste">
+        <input type="text" id="title" name="list_title" placeholder="Ma Liste">
 
         <label for="date"><b>Date d'expiration :</b></label>
-       <input type="date" name="date">
+       <input type="date" name="list_date">
 
         <label for="desc"><b>Description de la liste:</b></label>
         <textarea id="descItem" placeholder="Ceci est un exemple de description" 
-        name="item_description"></textarea>
+        name="list_description"></textarea>
         
         <input type="submit" id='submit' value="Créer la liste">
     

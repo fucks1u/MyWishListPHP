@@ -3,16 +3,9 @@
 namespace wishlist\vue;
 
 class VueRecapInvalide{
-    private array $array;
 
-    public function __construct(array $a){
-        $this->array = $a;
-    }
 
     public function render() : mixed{
-        $nom = $this->array['item_name'];
-        $prix = $this->array['item_price'];
-        $desc = $this->array['item_description'];
         $html = <<<END
 <!DOCTYPE html> 
 <html>
@@ -23,9 +16,9 @@ class VueRecapInvalide{
     <body>
         <h2>Dans le formulaire précédent, vous avez fourni des informations invalide :</h2>
         
-        <p><b>Nom : </b>$nom, doit etre du type texte => "Caramel"</p>
-        <p><b>Prix : </b>$prix, doit etre du type nombre => "15"</p>
-        <p><b>Description : </b>$desc, doit etre du type texte => "Ceci est un exemple"</p>
+        <p>Nom : <b>Caramel</b>, doit etre du type texte => "Caramel"</p>
+        <p>Prix : <b>15</b></p>
+        <p>Description : <b>Description pour l'item Caramel</b></p>
     </body>
 </html>
 END;

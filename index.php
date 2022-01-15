@@ -1,7 +1,5 @@
 <?php
 
-use \wishlist\modele\Liste as Liste; //utilisation du namespace pour les use
-use \wishlist\modele\Item as Item;
 use \Psr\Http\Message\ResponseInterface as Response;
 use \Psr\Http\Message\ServerRequestInterface as Request;
 use wishlist\vue\VueIndex;
@@ -22,19 +20,24 @@ $app = new \Slim\App($c);
  * Listes
  */
 $app->get('/list', function (Request $request, Response $response,array $args){
-    $c = new \wishlist\controller\ItemController($this);
+    $c = new \wishlist\controller\Controller($this);
     return $c->showListPanel($request,$response,$args);
 });
 
 $app->get('/list/createList', function (Request $request, Response $response,array $args){
-    $c = new \wishlist\controller\ItemController($this);
+    $c = new \wishlist\controller\Controller($this);
+    return $c->getFormList($request,$response,$args);
+});
+
+$app->post('/list/createList', function (Request $request, Response $response,array $args){
+    $c = new \wishlist\controller\Controller($this);
     return $c->createList($request,$response,$args);
 });
 
 
 $app->get('list/addItem', function (Request $request, Response $response,array $args){
-    $c = new \wishlist\controller\ItemController($this);
-    return $c->createItem($request,$response,$args);
+    $c = new \wishlist\controller\Controller($this);
+    return $c->getFormItem($request,$response,$args);
 });
 
 /*
@@ -42,8 +45,8 @@ $app->get('list/addItem', function (Request $request, Response $response,array $
  * et appel de la fonction resumeItem
  */
 $app->post('list/addItem',function(Request $request, Response $response, array $args){
-    $c = new \wishlist\controller\ItemController($this);
-    return $c->resumeItem($request,$response,$args);
+    $c = new \wishlist\controller\Controller($this);
+    return $c->resumeCreateItem($request,$response,$args);
 });
 
 /*
@@ -51,7 +54,7 @@ $app->post('list/addItem',function(Request $request, Response $response, array $
  */
 $app->get('/item/{id}', function (Request $request, Response $response, array $args) {
 
-    $c = new wishlist\controller\ItemController($this);
+    $c = new wishlist\controller\Controller($this);
     return $c->getItem($request,$response,$args);
 
     /*$name = $args['name'];
@@ -65,7 +68,7 @@ $app->get('/item/{id}', function (Request $request, Response $response, array $a
  * Liste et Items
  */
 $app->get('/listeItems/view/{id}', function (Request $request, Response $response,array $args){
-    $c = new \wishlist\controller\ItemController($this);
+    $c = new \wishlist\controller\Controller($this);
     return $c->getListItem($request,$response,$args);
 });
 
@@ -83,8 +86,8 @@ $app->get('/', function (Request $request, Response $response, array $args) {
 });
 //poser question au prof pour le controleur, si il en faut que 1 ou alors dissocier
 $app->post('/',function(Request $request, Response $response, array $args){
-    $c = new \wishlist\controller\ItemController($this);
-    return $c->resumeItem($request,$response,$args);
+    $c = new \wishlist\controller\Controller($this);
+    return $c->resumeCreateItem($request,$response,$args);
 });
 
 

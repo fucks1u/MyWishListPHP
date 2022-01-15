@@ -2,6 +2,7 @@
 
 namespace wishlist\controller;
 
+use App\OAuthProvider;
 use PDOException;
 use wishlist\modele\Item;
 use \Psr\Http\Message\ResponseInterface as Response;
@@ -12,22 +13,16 @@ use wishlist\vue\VueFormulaireListe;
 use wishlist\vue\VueListeItem;
 use wishlist\vue\VueRecapItem;
 use wishlist\vue\VueRecapInvalide;
+use wishlist\vue\VueRecapListe;
 
-class ItemController{
+class Controller{
 
-    private $container; //conteneur de dependances de l'application
+    private $container;
 
     public function __construct(\Slim\Container $c){
-
         $this->container = $c;
-
  }
- /* Exemple
-public function hello(Request $request, Response $response, array $args) : Response{
-    $name = $args['name'];
-    $response->getBody()->write("<h1>Hello, $name</h1>");
-    return $response;
-}*/
+
 
     public function getItem($rq, $rs, $args) : Response{
         $base = $rq->getUri()->getBasePath();
@@ -38,11 +33,44 @@ public function hello(Request $request, Response $response, array $args) : Respo
         return $rs;
     }
 
-    public function createList($rq,$rs,$args){
+    /*
+     * -------------------------------------------------
+     * - Methodes pour la gestion et creation de Liste -
+     * -------------------------------------------------
+     */
+    public function getFormList($rq, $rs, $args){
         $v = new VueFormulaireListe();
         $rs->getBody()->write($v->render());
         return $rs;
 }
+
+    public function createList($rq,$rs, $args){
+        //$token = $rq->header('X-TOKEN'); //recuperation du token
+        //$p = new \OAuthProvider();
+        //$token = $p->generateToken(8)'; //création du token
+        $data = $rq->getParsedBody();
+
+        $titre = $data['list_title'];
+        $date = $data['list_date'];
+        $desc = $data['list_description'];
+
+        if(!filter_var($titre,FILTER_SANITIZE_STRING)||!filter_var($desc,FILTER_SANITIZE_STRING)){
+            $v = new VueRecapInvalide($data);
+            $rs->getBody()->write($v->render());
+        } else {
+            //ajout dans la base de donnée
+            try{
+                Liste::insert(['titre'=>$titre,'description'=>$desc,'expiration'=>$date,'token'=>'coucou']);
+            } catch(PDOException $e){
+                throw new DBException('Ajout impossible : ' .$e->getMessage());
+            }
+            //création de la vue racapitulative
+            $v = new VueRecapListe($data);
+            $rs->getBody()->write($v->render());
+
+        }
+        return $rs;
+    }
 
     public function getList($rq, $rs, $args){
         $base = $rq->getUri()->getBasePath();
@@ -60,10 +88,13 @@ public function hello(Request $request, Response $response, array $args) : Respo
         return $rs;
     }
 
+
     /*
-     * Methode permettant d'afficher visuellement le formulaire
+     * ------------------------------------------------------------
+     * - Methode permettant d'afficher visuellement le formulaire -
+     * ------------------------------------------------------------
      */
-    public function createItem($rq,$rs,$args){
+    public function getFormItem($rq, $rs, $args){
         //$list = Item::query('SELECT * FROM ITEM');
         $v = new VueFormulaireItem();
         $rs->getBody()->write($v->render());
@@ -74,7 +105,7 @@ public function hello(Request $request, Response $response, array $args) : Respo
      * Methode permettant de recuperer les données présentes dans le formulaire
      * et egalement l'afficher sur une page annexe
      */
-    public function resumeItem($rq,$rs,$args){
+    public function resumeCreateItem($rq, $rs, $args){
         //récupération des données du post
         $data = $rq->getParsedBody();
         $nom = $data['item_name'];
