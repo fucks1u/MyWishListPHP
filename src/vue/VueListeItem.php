@@ -22,7 +22,7 @@ class VueListeItem
     <a href="list/createList">
         <input type="button" value="Créer une liste">
     </a>
-    <a href="viewList">
+    <a href="list/viewList">
         <input type="button" value="Visualiser une liste">
     </a>
     

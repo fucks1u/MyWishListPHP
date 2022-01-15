@@ -24,6 +24,7 @@ $app->get('/list', function (Request $request, Response $response,array $args){
     return $c->showListPanel($request,$response,$args);
 });
 
+
 $app->get('/list/createList', function (Request $request, Response $response,array $args){
     $c = new \wishlist\controller\Controller($this);
     return $c->getFormList($request,$response,$args);

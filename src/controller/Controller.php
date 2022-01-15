@@ -2,8 +2,7 @@
 
 namespace wishlist\controller;
 
-use App\OAuthProvider;
-use PDOException;
+use wishlist\controller\DBException;
 use wishlist\modele\Item;
 use \Psr\Http\Message\ResponseInterface as Response;
 use \Psr\Http\Message\ServerRequestInterface as Request;
@@ -48,6 +47,7 @@ class Controller{
         //$token = $rq->header('X-TOKEN'); //recuperation du token
         //$p = new \OAuthProvider();
         //$token = $p->generateToken(8)'; //création du token
+        $token = base_convert(hash('sha256', time() . mt_rand()), 16, 36);
         $data = $rq->getParsedBody();
 
         $titre = $data['list_title'];
@@ -60,7 +60,7 @@ class Controller{
         } else {
             //ajout dans la base de donnée
             try{
-                Liste::insert(['titre'=>$titre,'description'=>$desc,'expiration'=>$date,'token'=>'coucou']);
+                Liste::insert(['titre'=>$titre,'description'=>$desc,'expiration'=>$date,'token'=>$token]);
             } catch(PDOException $e){
                 throw new DBException('Ajout impossible : ' .$e->getMessage());
             }
