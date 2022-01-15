@@ -13,6 +13,7 @@ use wishlist\vue\VueListeItem;
 use wishlist\vue\VueRecapItem;
 use wishlist\vue\VueRecapInvalide;
 use wishlist\vue\VueRecapListe;
+use wishlist\vue\VueListe;
 
 class Controller{
 
@@ -43,6 +44,24 @@ class Controller{
         return $rs;
 }
 
+    public function getFormListId($rq, $rs, $args){
+        $v = new VueListe();
+        $rs->getBody()->write($v->render());
+        return $rs;
+    }
+
+    public function getList($rq, $rs, $args){
+        $data = $rq->getParsedBody();
+        $base = $rq->getUri()->getBasePath();
+        //$id = $args['id'];
+        $list = Liste::where('no', '=',$data['list_id'])->get();
+        $items = Item::where('liste_id', '=',$data['list_id'])->get();
+        $v = new \wishlist\vue\VueParticipant([$list]);
+        $v->setItems($items);
+        $rs->getBody()->write($v->render(1,$base));
+        return $rs;
+    }
+
     public function createList($rq,$rs, $args){
         //$token = $rq->header('X-TOKEN'); //recuperation du token
         //$p = new \OAuthProvider();
@@ -72,14 +91,6 @@ class Controller{
         return $rs;
     }
 
-    public function getList($rq, $rs, $args){
-        $base = $rq->getUri()->getBasePath();
-        $id = $args['id'];
-        $list = Liste::where('no', '=',$args['id'])->get();
-        $v = new \wishlist\vue\VueParticipant([$list]);
-        $rs->getBody()->write($v->render(1,$base));
-        return $rs;
-    }
 
     public function getListItem($rq, $rs, $args){
         $list = Liste::where('no', '=',$args['id'])->with('items')->first();
@@ -136,11 +147,6 @@ class Controller{
 // filtrer les données remplies dans les champs
     //ajouter les données dans la base de donnée (a faire)
 
-public function showListPanel($rq,$rs,$args){
-    $v = new VueListeItem();
-    $rs->getBody()->write($v->render());
-    return $rs;
-}
 
 
 

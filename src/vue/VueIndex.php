@@ -19,10 +19,10 @@ class VueIndex
 <h1><strong><u>MyWishList</u></strong></h1>
 <form>
     <a href="list">
-        <input type="button" value="Listes">
+        <input type="button" value="Afficher une liste">
     </a>
-    <a href="item">
-        <input type="button" value="Items">
+    <a href="list/createList">
+        <input type="button" value="Créer une liste">
     </a>
 </form>
 </body>

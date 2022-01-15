@@ -21,9 +21,13 @@ $app = new \Slim\App($c);
  */
 $app->get('/list', function (Request $request, Response $response,array $args){
     $c = new \wishlist\controller\Controller($this);
-    return $c->showListPanel($request,$response,$args);
+    return $c->getFormListId($request,$response,$args);
 });
 
+$app->post('/list/view', function (Request $request, Response $response,array $args){
+    $c = new \wishlist\controller\Controller($this);
+    return $c->getList($request,$response,$args);
+});
 
 $app->get('/list/createList', function (Request $request, Response $response,array $args){
     $c = new \wishlist\controller\Controller($this);

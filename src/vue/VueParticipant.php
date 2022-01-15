@@ -4,11 +4,15 @@ namespace wishlist\vue;
 class VueParticipant{
 
     private array $array;
+    private $items;
 
     function __construct(array $a){
         $this->array = $a;
     }
 
+    public function setItems($a):void{
+        $this->items = $a;
+    }
     public function render(int $nb,string $base) : mixed{
         $content = '';
         $desc = '';
@@ -20,7 +24,12 @@ class VueParticipant{
                 $content = $content ."\n" .'<h1>' .$value->titre .'</h1>';
                 $content = $content ."\n" .'<h2>' .$value->description .'</h2>';
                 $content = $content ."\n" .'<p>Attention la liste expire le : ' .$value->expiration .'</p>';
+                $content = $content ."\n" .'<p>Voici la liste des items présent dans la liste : </p>';
             }
+            foreach ($this->items as $v){
+                $content = $content ."\n" .'<p>' .$v['nom'] .'</p>';
+            }
+            $im ="";
                 break;
             }
             case 2 : {
