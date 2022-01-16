@@ -31,5 +31,3 @@ END;
 }
 }
 
-//<button name="listes"><strong>Listes</strong><br>Afficher le menu des listes</button><br>
-//<button name="items"><strong>Items</strong><br>Afficher le menu des items</button>

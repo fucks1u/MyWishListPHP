@@ -51,8 +51,11 @@ class VueParticipant{
 </div>
 <br>
 <form>
-    <a href="message">
+    <a href="createMessage">
         <input type="button" value="Ajouter un message">
+    </a>
+    <a href="messages">
+        <input type="button" value="Listes des messages">
     </a>
     <input type="button" value="Retour" onclick="history.go(-1)">
 </form>

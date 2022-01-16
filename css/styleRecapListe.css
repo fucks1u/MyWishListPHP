@@ -32,6 +32,15 @@ h1 {
      text-align: justify;
      line-height: 30px;
      font-size:larger;
+ }
 
-
+input[type="button"]{
+     background-color: #aa2f2f;
+     color: white;
+     padding: 14px 20px;
+     margin: 120px 50px;
+     border: none;
+     cursor: pointer;
+     width: 70%;
+    alignment: center;
  }

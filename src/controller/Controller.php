@@ -106,6 +106,13 @@ class Controller{
         return $rs;
     }
 
+    public function getMessageRecap($rq, $rs, $args){
+        $data = $rq->getParsedBody();
+        $v = new \wishlist\vue\VueMessageListe();
+        $rs->getBody()->write($v->renderRecap());
+        return $rs;
+    }
+
     /*
      * ------------------------------------------------------------
      * - Methode permettant d'afficher visuellement le formulaire -
