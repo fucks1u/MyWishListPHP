@@ -19,6 +19,7 @@ class VueParticipant{
         $items = '';
             $liste = $this->array[0];
             foreach($liste as $value){
+                $idlist = $value->no;
                 $content = $content ."\n" .'<h1>' .$value->titre .'</h1>';
                 $content = $content ."\n" .'<h2>' .$value->description .'</h2>';
                 $content = $content ."\n" .'<p>Attention la liste expire le : ' .$value->expiration .'</p>';
@@ -54,7 +55,7 @@ class VueParticipant{
 </div>
 <br>
 <form>
-    <a href="createMessage">
+    <a href="createMessage/$idlist">
         <input type="button" value="Ajouter un message">
     </a>
     <a href="messages">

@@ -51,12 +51,12 @@ $app->get('list/addItem', function (Request $request, Response $response,array $
     return $c->getFormItem($request,$response,$args);
 });
 
-$app->get('/list/createMessage', function (Request $request, Response $response,array $args){
+$app->get('/list/createMessage/{id}', function (Request $request, Response $response,array $args){
     $c = new \wishlist\controller\Controller($this);
     return $c->getMessageList($request,$response,$args);
 });
 
-$app->post('/list/createMessage', function (Request $request, Response $response,array $args){
+$app->post('/list/createMessage/{id}', function (Request $request, Response $response,array $args){
     $c = new \wishlist\controller\Controller($this);
     return $c->getMessageRecap($request,$response,$args);
 });

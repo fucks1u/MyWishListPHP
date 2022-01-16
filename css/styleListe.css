@@ -77,6 +77,13 @@ textarea[name=list_description]{
     height: 50px;
 }
 
+textarea[name=message]{
+    display: block;
+    margin-top: 10px;
+    width: 395px;
+    height: 50px;
+}
+
 input[type=date] {
     width: 100%;
     padding: 12px 20px;

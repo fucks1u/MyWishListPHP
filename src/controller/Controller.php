@@ -19,6 +19,7 @@ use wishlist\vue\VueListe;
 class Controller{
 
     private $container;
+    private $cookie;
 
     public function __construct(\Slim\Container $c){
         $this->container = $c;
@@ -67,7 +68,7 @@ class Controller{
         //$token = $rq->header('X-TOKEN'); //recuperation du token
         //$p = new \OAuthProvider();
         //$token = $p->generateToken(8)'; //création du token
-        $token = base_convert(hash('sha256', time() . mt_rand()), 16, 36);
+        $this->verifCookie();
         $data = $rq->getParsedBody();
 
         $titre = $data['list_title'];
@@ -80,14 +81,13 @@ class Controller{
         } else {
             //ajout dans la base de donnée
             try{
-                Liste::insert(['titre'=>$titre,'description'=>$desc,'expiration'=>$date,'token'=>$token]);
+                Liste::insert(['titre'=>$titre,'description'=>$desc,'expiration'=>$date,'token'=>$_COOKIE['participant_cookie']]);
             } catch(PDOException $e){
                 throw new DBException('Ajout impossible : ' .$e->getMessage());
             }
             //création de la vue racapitulative
             $v = new VueRecapListe($data);
             $rs->getBody()->write($v->render());
-
         }
         return $rs;
     }
@@ -101,14 +101,23 @@ class Controller{
     }
 
     public function getMessageList($rq, $rs, $args){
-        $v = new \wishlist\vue\VueMessageListe();
+        $v = new \wishlist\vue\VueMessageListe($args);
         $rs->getBody()->write($v->render());
         return $rs;
     }
 
+
     public function getMessageRecap($rq, $rs, $args){
         $data = $rq->getParsedBody();
-        $v = new \wishlist\vue\VueMessageListe();
+        echo($data['message']);
+        echo($args['id']);
+
+//        try{
+//            Message::insert(['id_liste'=>$args['id'],'message'=>$data['message']]);
+//        } catch(PDOException $e){
+//            throw new DBException('Ajout impossible : ' .$e->getMessage());
+//        }
+        $v = new \wishlist\vue\VueMessageListe($args);
         $rs->getBody()->write($v->renderRecap());
         return $rs;
     }
@@ -157,6 +166,12 @@ class Controller{
         return $rs;
     }
 
+    public function verifCookie(){
+        if($_COOKIE["participant_cookie"] == null){
+            $token = base_convert(hash('sha256', time() . mt_rand()), 16, 36);
+            setcookie("participant_cookie",$token);
+        }
+    }
 // filtrer les données remplies dans les champs
     //ajouter les données dans la base de donnée (a faire)
 

@@ -6,7 +6,6 @@ class VueListe
 {
     public static function render():string{
 
-
         return <<<END
 <!DOCTYPE html> 
  <head>
@@ -18,7 +17,7 @@ class VueListe
     <a href="/MyWishListPHP">
         <input type="button" name="accueil">
     </a>
- <form action="list/view" method="post" name="affichage">
+ <form action="list/view/" method="post" name="affichage">
    <h1>Affichage d'une liste</h1>
 
         <label for="titre"><b>Numéro de liste:</b></label>
