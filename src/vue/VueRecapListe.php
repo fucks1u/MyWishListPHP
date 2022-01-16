@@ -24,7 +24,7 @@ class VueRecapListe{
     <body>
 
         <h1>Dans le formulaire précédent, vous avez fourni les
-        informations suivantes:</h1>
+        informations suivantes concernant la liste:</h1>
 
         <div class="fond">
         
