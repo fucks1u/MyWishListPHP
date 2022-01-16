@@ -61,6 +61,9 @@ class VueParticipant{
       <link rel="stylesheet" href="../css/styleContenuListe.css">
     </head>
 <body>
+    <a href="/MyWishListPHP">
+        <input type="button" name="accueil">
+    </a>
 <div class="content">
  $content
  $desc
@@ -68,7 +71,7 @@ class VueParticipant{
  <br>
 </div>
 <br>
-<form>
+<form name="message">
     <a href="message">
         <input type="button" value="Ajouter un message">
     </a>
