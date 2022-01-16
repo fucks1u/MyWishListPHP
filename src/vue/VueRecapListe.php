@@ -29,7 +29,7 @@ class VueRecapListe{
         <div class="fond">
         
         <p><b>Titre:</b> $titre</p>
-        <p><b>Date d'expiration:</b> date</p>
+        <p><b>Date d'expiration:</b> $date</p>
         <p><b>Description:</b><br></br>$desc</p>
 
         </div>
