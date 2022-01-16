@@ -22,12 +22,17 @@ class VueRecapListe{
         <link rel="stylesheet" href="../css/styleRecapListe.css">
     </head>
     <body>
+
         <h1>Dans le formulaire précédent, vous avez fourni les
-        informations suivantes pour la création d'une liste:</h1>
+        informations suivantes:</h1>
+
+        <div class="fond">
         
-        <p><b>Titre : </b>$titre</p>
-        <p><b>Date d'expiration : </b>$date</p>
-        <p><b>Description : </b>$desc</p>
+        <p><b>Titre:</b> $titre</p>
+        <p><b>Date d'expiration:</b> date</p>
+        <p><b>Description:</b><br></br>$desc</p>
+
+        </div>
     </body>
 </html>
 END;
