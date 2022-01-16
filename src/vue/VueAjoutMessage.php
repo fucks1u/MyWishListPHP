@@ -2,7 +2,7 @@
 
 namespace wishlist\vue;
 
-class VueMessageListe{
+class VueAjoutMessage{
 
     private array $array;
 
@@ -52,7 +52,7 @@ END;
         <label for="fin"><b>Votre message a bien été enregistré dans la base de donnée</b></label>
         <label for="fin"><b>Vous pouvez retourner à la page précédente </b></label>
         
-        <input type="button" value="Retour" onclick="history.go(-2)">
+        <input type="button" value="Acceuil" onclick="history.go(-3)">
 </form>
 </div>
 </body><html>

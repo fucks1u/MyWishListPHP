@@ -2,7 +2,7 @@
 
 namespace wishlist\vue;
 
-class VueIndex
+class VueAcceuil
 {
     public static function render():string{
 

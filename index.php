@@ -2,7 +2,7 @@
 
 use \Psr\Http\Message\ResponseInterface as Response;
 use \Psr\Http\Message\ServerRequestInterface as Request;
-use wishlist\vue\VueIndex;
+use wishlist\vue\VueAcceuil;
 
 require __DIR__ .'/vendor/autoload.php'; //utilsation du chemin pour les require
 require __DIR__ .'/src/conf/conf.php';
@@ -61,7 +61,7 @@ $app->post('/list/createMessage/{id}', function (Request $request, Response $res
     return $c->getMessageRecap($request,$response,$args);
 });
 
-$app->get('/list/viewMessages', function (Request $request, Response $response,array $args){
+$app->get('/list/viewMessages/{id}', function (Request $request, Response $response,array $args){
     $c = new \wishlist\controller\Controller($this);
     return $c->getMessages($request,$response,$args);
 });
@@ -82,13 +82,17 @@ $app->get('/list/item/{id}', function (Request $request, Response $response, arr
 
     $c = new wishlist\controller\Controller($this);
     return $c->getItem($request,$response,$args);
-
-    /*$name = $args['name'];
-    $response->getBody()->write("<h1>Hello, $name</h1>");
-    return $response;*/
 });
 
 
+
+/*
+ * nouveauté
+ */
+//$app->get('list/vi', function (Request $request, Response $response,array $args){
+//    $c = new \wishlist\controller\Controller($this);
+//    return $c->getFormItem($request,$response,$args);
+//});
 
 /*
  * Liste et Items
@@ -106,8 +110,8 @@ $app->get('/listeItems/view/{id}', function (Request $request, Response $respons
  * page d'acceuil
  */
 $app->get('/', function (Request $request, Response $response, array $args) {
-    $vIndex = new \wishlist\vue\VueIndex();
-    $response->getBody()->write(VueIndex::render());
+    $vIndex = new \wishlist\vue\VueAcceuil();
+    $response->getBody()->write(VueAcceuil::render());
     return $response;
 });
 //poser question au prof pour le controleur, si il en faut que 1 ou alors dissocier

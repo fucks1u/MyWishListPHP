@@ -17,7 +17,7 @@ class VueRecapListe{
 <!DOCTYPE html> 
 <html>
     <head>
-        <title>Page de traitement</title>
+        <title>Recapitulatif liste</title>
         <meta charset="utf-8">
         <link rel="stylesheet" href="../css/styleRecapListe.css">
     </head>
@@ -29,9 +29,10 @@ class VueRecapListe{
         <div class="fond">
         
         <p><b>Titre:</b> $titre</p>
-        <p><b>Date d'expiration:</b> $date</p>
+        <p><b>Date d'expiration :</b> $date</p>
         <p><b>Description:</b><br></br>$desc</p>
     <input type="button" value="Acceuil" onclick="history.go(-2)">
+    <input type="button" value="Copier URL" onclick="">
         </div>
     </body>
 </html>

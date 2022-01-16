@@ -1,7 +1,7 @@
 <?php
 namespace wishlist\vue;
 
-class VueFormulaireListe{
+class VueAjoutListe{
 
     public function render() : string{
 

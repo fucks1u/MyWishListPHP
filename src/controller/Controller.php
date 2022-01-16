@@ -8,13 +8,15 @@ use \Psr\Http\Message\ResponseInterface as Response;
 use \Psr\Http\Message\ServerRequestInterface as Request;
 use wishlist\modele\Liste;
 use wishlist\vue\VueFormulaireItem;
-use wishlist\vue\VueFormulaireListe;
+use wishlist\vue\VueAjoutListe;
 use wishlist\vue\VueListeItem;
+use wishlist\vue\VueMessages;
 use wishlist\vue\VueRecapItem;
 use wishlist\vue\VueRecapListeInvalide;
 use wishlist\vue\VueRecapItemInvalide;
 use wishlist\vue\VueRecapListe;
-use wishlist\vue\VueListe;
+use wishlist\vue\VueRechercheListe;
+use wishlist\modele\Message;
 
 class Controller{
 
@@ -41,13 +43,13 @@ class Controller{
      * -------------------------------------------------
      */
     public function getFormList($rq, $rs, $args){
-        $v = new VueFormulaireListe();
+        $v = new VueAjoutListe();
         $rs->getBody()->write($v->render());
         return $rs;
 }
 
     public function getFormListId($rq, $rs, $args){
-        $v = new VueListe();
+        $v = new VueRechercheListe();
         $rs->getBody()->write($v->render());
         return $rs;
     }
@@ -55,19 +57,15 @@ class Controller{
     public function getList($rq, $rs, $args){
         $data = $rq->getParsedBody();
         $base = $rq->getUri()->getBasePath();
-        //$id = $args['id'];
         $list = Liste::where('no', '=',$data['list_id'])->get();
         $items = Item::where('liste_id', '=',$data['list_id'])->get();
-        $v = new \wishlist\vue\VueParticipant([$list]);
+        $v = new \wishlist\vue\VueListe([$list]);
         $v->setItems($items);
         $rs->getBody()->write($v->render(1,$base));
         return $rs;
     }
 
     public function createList($rq,$rs, $args){
-        //$token = $rq->header('X-TOKEN'); //recuperation du token
-        //$p = new \OAuthProvider();
-        //$token = $p->generateToken(8)'; //création du token
         $this->verifCookie();
         $data = $rq->getParsedBody();
 
@@ -95,13 +93,21 @@ class Controller{
 
     public function getListItem($rq, $rs, $args){
         $list = Liste::where('no', '=',$args['id'])->with('items')->first();
-        $v = new \wishlist\vue\VueParticipant([$list]);
+        $v = new \wishlist\vue\VueListe([$list]);
         $rs->getBody()->write($v->render(2));
         return $rs;
     }
 
     public function getMessageList($rq, $rs, $args){
-        $v = new \wishlist\vue\VueMessageListe($args);
+        $v = new \wishlist\vue\VueAjoutMessage($args);
+        $rs->getBody()->write($v->render());
+        return $rs;
+    }
+
+    public function getMessages($rq, $rs, $args){
+        $id = $args['id'];
+        $mess = Message::where('id_liste', '=',$id)->get();
+        $v = new \wishlist\vue\VueMessages([$mess]);
         $rs->getBody()->write($v->render());
         return $rs;
     }
@@ -109,15 +115,13 @@ class Controller{
 
     public function getMessageRecap($rq, $rs, $args){
         $data = $rq->getParsedBody();
-        echo($data['message']);
-        echo($args['id']);
-
-//        try{
-//            Message::insert(['id_liste'=>$args['id'],'message'=>$data['message']]);
-//        } catch(PDOException $e){
-//            throw new DBException('Ajout impossible : ' .$e->getMessage());
-//        }
-        $v = new \wishlist\vue\VueMessageListe($args);
+        $token = $_COOKIE['participant_cookie'];
+        try{
+            Message::insert(['id_liste'=>$args['id'],'message'=>$data['message'],'token'=>$token]);
+        } catch(PDOException $e){
+            throw new DBException('Ajout impossible : ' .$e->getMessage());
+        }
+        $v = new \wishlist\vue\VueAjoutMessage($args);
         $rs->getBody()->write($v->renderRecap());
         return $rs;
     }
