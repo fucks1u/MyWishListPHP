@@ -13,6 +13,9 @@ class VueFormulaireListe{
       <link rel="stylesheet" href="../css/styleListe.css">
     </head>
     <body>
+        <a href="/MyWishListPHP">
+            <input type="button" name="accueil">
+        </a>
     <div id="container">
  <form action="createList" method="post">
    <h1>Création d'une liste</h1>

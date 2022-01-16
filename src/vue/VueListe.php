@@ -15,8 +15,10 @@ class VueListe
       <link rel="stylesheet" href="css/styleListe.css">
     </head>
 <body>
-
- <form action="list/view" method="post">
+    <a href="/MyWishListPHP">
+        <input type="button" name="accueil">
+    </a>
+ <form action="list/view" method="post" name="affichage">
    <h1>Affichage d'une liste</h1>
 
         <label for="titre"><b>Numéro de liste:</b></label>

@@ -9,13 +9,26 @@ h1{
     text-align: center;
 }
 
+input[name=accueil]{
+    background-image: url("../img/_accueil.png") ;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: 0px 0px;
+    border: none;
+    margin-bottom: 10px;
+    height: 32px;
+    padding-left: 32px;
+    vertical-align: middle;
+}
+
+
 div[class=content]{
     background: #ffff;
     border-radius: 200px;
     text-align: center;
 }
 
-input {
+form[name=message] {
     display: inline-block;
     padding: 15px 25px;
     font-size: 24px;
@@ -29,14 +42,12 @@ input {
     box-shadow: 0 9px #999;
 }
 
-button{
+form[name=message]:hover {
     position: relative;
-}
-input:hover {
     background-color: #2a2828;
 }
 
-input:active {
+form[name=message]:active {
     background-color: #2a2828;
     box-shadow: 0 5px #666;
     transform: translateY(4px);
