@@ -1,0 +1,45 @@
+
+body{
+    background-color: rgb(196, 50, 50);
+}
+
+.fond{
+    background-color: lightgreen;
+    border: 2px solid green;
+    width: 500px;
+    height: 400px;
+    margin: 5% auto 0 auto;
+}
+.check{
+    background-color: green;
+    color: azure;
+}
+.solution{
+    background-color: yellowgreen;
+    color: brown;
+}
+h1 {
+    background-color: #aa2f2f;
+    color: antiquewhite;
+ font-weight: lighter;
+ font-family: Arial;
+ font-style: italic;
+ font-variant: small-caps;
+ text-align: center;
+ 
+ text-align: center;
+ border: 2px solid red;
+ }
+
+ b{
+     text-decoration: underline;
+ }
+ p{
+     text-align: justify;
+     line-height: 30px;
+     font-size:larger;
+     padding-left: 10px;
+     padding-right: 10px;
+
+
+ }
