@@ -1,0 +1,43 @@
+body {
+    background: #aa2f2f;
+}
+
+
+h1{
+    background: #fff;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+    width: 50%;
+    text-align: center;
+    border: 1px solid #CCC;
+    border-radius: 1em;
+}
+
+div[class=content]{
+    background: #ffff;
+    border-radius: 2em;
+}
+
+input {
+    display: inline-block;
+    padding: 15px 25px;
+    font-size: 24px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: white;
+    background-color: black;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 9px #999;
+}
+
+input:hover {
+    background-color: #2a2828;
+}
+
+input:active {
+    background-color: #2a2828;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}

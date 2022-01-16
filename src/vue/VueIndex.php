@@ -12,16 +12,16 @@ class VueIndex
  <head>
       <title>MyWishList</title>
       <meta charset="utf-8">
-      <link rel="stylesheet">
+      <link rel="stylesheet" href="css/styleIndex.css">
     </head>
 <body>
 
 <h1><strong><u>MyWishList</u></strong></h1>
 <form>
-    <a href="list">
+    <a href="list" style="text-decoration:none">
         <input type="button" value="Afficher une liste">
     </a>
-    <a href="list/createList">
+    <a href="list/createList" style="text-decoration:none">
         <input type="button" value="Créer une liste">
     </a>
 </form>

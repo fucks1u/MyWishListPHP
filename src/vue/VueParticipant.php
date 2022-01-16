@@ -54,19 +54,26 @@ class VueParticipant{
         }
 
         $html = <<<END
-<!DOCTYPE html> <html>
+<!DOCTYPE html>
+ <head>
+      <title>MyWishList</title>
+      <meta charset="utf-8">
+      <link rel="stylesheet" href="../css/styleContenuListe.css">
+    </head>
 <body>
 <div class="content">
  $content
  $desc
  $im
+ <br>
 </div>
+<br>
 <form>
     <a href="message">
         <input type="button" value="Ajouter un message">
     </a>
 </form>
-</body><html>
+</body></html>
 END ;
 return $html;
 
