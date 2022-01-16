@@ -11,7 +11,8 @@ use wishlist\vue\VueFormulaireItem;
 use wishlist\vue\VueFormulaireListe;
 use wishlist\vue\VueListeItem;
 use wishlist\vue\VueRecapItem;
-use wishlist\vue\VueRecapInvalide;
+use wishlist\vue\VueRecapListeInvalide;
+use wishlist\vue\VueRecapItemInvalide;
 use wishlist\vue\VueRecapListe;
 use wishlist\vue\VueListe;
 
@@ -74,7 +75,7 @@ class Controller{
         $desc = $data['list_description'];
 
         if(!filter_var($titre,FILTER_SANITIZE_STRING)||!filter_var($desc,FILTER_SANITIZE_STRING)){
-            $v = new VueRecapInvalide($data);
+            $v = new VueRecapListeInvalide($data);
             $rs->getBody()->write($v->render());
         } else {
             //ajout dans la base de donnée

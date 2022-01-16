@@ -19,10 +19,11 @@ class VueRecapListe{
     <head>
         <title>Page de traitement</title>
         <meta charset="utf-8">
+        <link rel="stylesheet" href="../css/styleRecapListe.css">
     </head>
     <body>
-        <h2>Dans le formulaire précédent, vous avez fourni les
-        informations suivantes pour la création d'une liste:</h2>
+        <h1>Dans le formulaire précédent, vous avez fourni les
+        informations suivantes pour la création d'une liste:</h1>
         
         <p><b>Titre : </b>$titre</p>
         <p><b>Date d'expiration : </b>$date</p>

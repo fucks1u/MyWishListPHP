@@ -2,7 +2,7 @@
 
 namespace wishlist\vue;
 
-class VueRecapInvalide{
+class VueRecapItemInvalide{
 
 
     public function render() : mixed{
@@ -14,7 +14,7 @@ class VueRecapInvalide{
         <meta charset="utf-8">
     </head>
     <body>
-        <h2>Dans le formulaire précédent, vous avez fourni des informations invalide :</h2>
+        <h2>Dans le formulaire précédent, vous avez fourni des informations invalides :</h2>
         
         <p>Nom : <b>Caramel</b>, doit etre du type texte => "Caramel"</p>
         <p>Prix : <b>15</b></p>
