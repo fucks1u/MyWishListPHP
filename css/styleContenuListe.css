@@ -1,15 +1,12 @@
 body {
-    background: #aa2f2f;
+    background: rgb(196, 50, 50);
+}
+form {
+padding : 10px;
 }
 
-
 h1{
-    background: #fff;
-    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
-    width: 50%;
     text-align: center;
-    border: 1px solid #CCC;
-    border-radius: 1em;
 }
 
 input[name=accueil]{
@@ -27,7 +24,8 @@ input[name=accueil]{
 
 div[class=content]{
     background: #ffff;
-    border-radius: 2em;
+    border-radius: 200px;
+    text-align: center;
 }
 
 form[name=message] {
@@ -35,7 +33,6 @@ form[name=message] {
     padding: 15px 25px;
     font-size: 24px;
     cursor: pointer;
-    text-align: center;
     text-decoration: none;
     outline: none;
     color: white;
@@ -46,6 +43,7 @@ form[name=message] {
 }
 
 form[name=message]:hover {
+    position: relative;
     background-color: #2a2828;
 }
 

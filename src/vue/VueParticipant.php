@@ -13,12 +13,10 @@ class VueParticipant{
     public function setItems($a):void{
         $this->items = $a;
     }
-    public function render(int $nb,string $base) : mixed{
+    public function render() : mixed{
         $content = '';
         $desc = '';
-        switch($nb){
-            case 1 : {
-            //Affichage de la liste
+        $items = '';
             $liste = $this->array[0];
             foreach($liste as $value){
                 $content = $content ."\n" .'<h1>' .$value->titre .'</h1>';
@@ -26,32 +24,16 @@ class VueParticipant{
                 $content = $content ."\n" .'<p>Attention la liste expire le : ' .$value->expiration .'</p>';
                 $content = $content ."\n" .'<p>Voici la liste des items présent dans la liste : </p>';
             }
-            foreach ($this->items as $v){
-                $content = $content ."\n" .'<p>' .$v['nom'] .'</p>';
+            foreach ($this->items as $v) {
+                $iditem = $v['id'];
+                $nomitem = $v['nom'];
+                $items = $items .'<form action="item/' .$iditem .'">
+                 <button type="submit">' .$nomitem .'</button>
+                </form>';
             }
             $im ="";
-                break;
-            }
-            case 2 : {
-                //Affichage liste de souhaits et items
-                $list = $this->array[0];
-                $items = $list->items;
-                $content = '<h1>' .$list->titre .'</h1>';
-                $content = $content .'<ul>';
-                foreach($items as $value){
-                    $content = $content ."\n" .'<li>' .$value->nom .'</li>';
-                }
-                break;
-            }
-            //Affichage d'un item
-            case 3 : {
-                $item = $this->array[0];
-                $content = '<h1>' .$item->nom .'</h1>';
-                $desc = '<p>Description : ' .$item->descr .'</p>';
-                $im = '<img src="' .$base .'/img/'.$item->nom .'.jpg">';
-                break;
-            }
-        }
+
+
 
         $html = <<<END
 <!DOCTYPE html>
@@ -67,7 +49,7 @@ class VueParticipant{
 <div class="content">
  $content
  $desc
- $im
+ $items
  <br>
 </div>
 <br>
@@ -75,6 +57,7 @@ class VueParticipant{
     <a href="message">
         <input type="button" value="Ajouter un message">
     </a>
+    <input type="button" value="Retour" onclick="history.go(-1)">
 </form>
 </body></html>
 END ;

@@ -1,5 +1,6 @@
 
 body{
+   
     background-color: rgb(196, 50, 50);
 }
 
@@ -12,7 +13,7 @@ body{
     padding-left: 10px;
 }
 h1 {
-    background-color: #aa2f2f;
+    background-color:  #aa2f2f;
     color: antiquewhite;
  font-weight: lighter;
  font-family: Arial;

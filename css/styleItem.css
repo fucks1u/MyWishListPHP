@@ -1,5 +1,5 @@
 body{
-    background: #aa2f2f;
+    background: rgb(196, 50, 50);
 }
 #container{
     width:400px;
@@ -31,7 +31,7 @@ input[type=text] {
 }
 
 input[type=submit] {
-    background-color: #aa2f2f;
+    background-color: rgb(196, 50, 50);
     color: white;
     padding: 14px 20px;
     margin: 8px 0;
@@ -42,7 +42,7 @@ input[type=submit] {
 input[type=submit]:hover {
     background-color: white;
     color: #53af57;
-    border: 1px solid #aa2f2f;
+    border: 1px solid rgb(196, 50, 50);
 }
 input, textarea {
     font: 1em sans-serif;

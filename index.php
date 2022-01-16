@@ -68,7 +68,7 @@ $app->post('list/addItem',function(Request $request, Response $response, array $
 /*
  * Items
  */
-$app->get('/item/{id}', function (Request $request, Response $response, array $args) {
+$app->get('/list/item/{id}', function (Request $request, Response $response, array $args) {
 
     $c = new wishlist\controller\Controller($this);
     return $c->getItem($request,$response,$args);
