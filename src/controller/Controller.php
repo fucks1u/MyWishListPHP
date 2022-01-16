@@ -29,8 +29,8 @@ class Controller{
         $base = $rq->getUri()->getBasePath();
         $id = $args['id'];
         $item = Item::where('id','=',$args['id'])->first();
-        $v = new \wishlist\vue\VueParticipant([$item]);
-        $rs->getBody()->write($v->render(3,$base));
+        $v = new \wishlist\vue\VueItem([$item]);
+        $rs->getBody()->write($v->render($base));
         return $rs;
     }
 

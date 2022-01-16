@@ -1,20 +1,18 @@
 body {
     background: rgb(196, 50, 50);
 }
-
+form {
+padding : 10px;
+}
 
 h1{
-    background: #fff;
-    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
-    width: 50%;
     text-align: center;
-    border: 1px solid #CCC;
-    border-radius: 1em;
 }
 
 div[class=content]{
     background: #ffff;
-    border-radius: 2em;
+    border-radius: 200px;
+    text-align: center;
 }
 
 input {
@@ -22,7 +20,6 @@ input {
     padding: 15px 25px;
     font-size: 24px;
     cursor: pointer;
-    text-align: center;
     text-decoration: none;
     outline: none;
     color: white;
@@ -32,6 +29,9 @@ input {
     box-shadow: 0 9px #999;
 }
 
+button{
+    position: relative;
+}
 input:hover {
     background-color: #2a2828;
 }

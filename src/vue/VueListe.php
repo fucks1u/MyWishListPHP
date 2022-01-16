@@ -23,6 +23,7 @@ class VueListe
         <input type="text" id="id" name="list_id" placeholder="ex: 5">
         
         <input type="submit" id='submit' value="Afficher la liste">
+        <input type="button" value="Retour" onclick="history.go(-1)">
     
 </form>
 </body>

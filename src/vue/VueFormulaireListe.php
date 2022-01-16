@@ -16,7 +16,6 @@ class VueFormulaireListe{
     <div id="container">
  <form action="createList" method="post">
    <h1>Création d'une liste</h1>
-
         <label for="titre"><b>Titre de la liste:</b></label>
         <input type="text" id="title" name="list_title" placeholder="Ma Liste">
 
@@ -28,6 +27,7 @@ class VueFormulaireListe{
         name="list_description"></textarea>
         
         <input type="submit" id='submit' value="Créer la liste">
+        <input type="button" value="Retour" onclick="history.go(-1)">
     
 </form>
 </div>
