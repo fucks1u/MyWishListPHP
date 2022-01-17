@@ -29,11 +29,13 @@ class VueRecapListe{
         <div class="fond">
         
         <p><b>Titre:</b> $titre</p>
-        <p><b>Date d'expiration :</b> $date</p>
-        <p><b>Description:</b><br></br>$desc</p>
-    <input type="button" value="Acceuil" onclick="history.go(-2)">
-    <input type="button" value="Copier URL" onclick="">
+        <p><b>Date d'expiration:</b> $date</p>
+        <p><b>Description:</b><br></br><div class="desc">$desc</div></p>
         </div>
+        <div class=button>
+    <input type="button" value="Accueil" onclick="history.go(-2)">
+    <input type="button" value="Copier URL" onclick="">
+    </div>
     </body>
 </html>
 END;

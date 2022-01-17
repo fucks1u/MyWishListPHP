@@ -1,7 +1,9 @@
 body{
     background-color: rgb(196, 50, 50);
 }
-
+.desc{
+    font-size: smaller;
+}
 .fond{
     background-color: lightgoldenrodyellow;
     border: 2px solid yellow;
@@ -9,6 +11,14 @@ body{
     height: 400px;
     margin: 5% auto 0 auto;
     padding-left: 10px;
+}
+.button{
+    height:20px; 
+    width:400px; 
+    margin: -20px -50px; 
+    position:relative;
+    top:50%; 
+    left:42%;
 }
 h1 {
     background-color:  #aa2f2f;
@@ -29,15 +39,16 @@ h1 {
      text-align: justify;
      line-height: 30px;
      font-size:larger;
-     width: 110px;
+     width: 400px;
  }
 
 input[type="button"]{
      background-color: #aa2f2f;
      color: white;
      padding: 14px 20px;
-     margin-top:12px;
+     margin: auto 0 auto;
      border: none;
      cursor: pointer;
-     width: 70%;
+     width: 40%;
+     align-items: center;
  }
