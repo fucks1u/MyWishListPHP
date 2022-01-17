@@ -55,6 +55,10 @@ class VueListe{
 </div>
 <br>
 <form>
+    <a href="addItem/$idlist">
+        <input type="button" value="Ajouter un item">
+    </a>
+
     <a href="createMessage/$idlist">
         <input type="button" value="Ajouter un message">
     </a>

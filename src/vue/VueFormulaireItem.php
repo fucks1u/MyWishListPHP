@@ -3,6 +3,12 @@ namespace wishlist\vue;
 
 class VueFormulaireItem{
 
+    protected int $idListe;
+
+    public function __construct(int $id){
+        $this->idListe=$id;
+    }
+
     public function render() : mixed{
 
         $html = <<<END
@@ -10,12 +16,12 @@ class VueFormulaireItem{
  <head>
       <title>Création Item</title>
       <meta charset="utf-8">
-      <link rel="stylesheet" href="css/styleItem.css">
+      <link rel="stylesheet" href="../../css/styleItem.css">
     </head>
     <body>
     <div id="container">
  <form action="formlist" method="post">
-   <h1>Création d'un Item</h1>
+   <h1>Création d'un Item dans la liste $this->idListe</h1>
 
         <label for="name"><b>Nom de l'Item :</b></label>
         <input type="text" id="nomItem" name="item_name" placeholder="Caramel">

@@ -46,11 +46,6 @@ $app->post('/list/createList', function (Request $request, Response $response,ar
 });
 
 
-$app->get('list/addItem', function (Request $request, Response $response,array $args){
-    $c = new \wishlist\controller\Controller($this);
-    return $c->getFormItem($request,$response,$args);
-});
-
 $app->get('/list/createMessage/{id}', function (Request $request, Response $response,array $args){
     $c = new \wishlist\controller\Controller($this);
     return $c->getMessageList($request,$response,$args);
@@ -66,11 +61,16 @@ $app->get('/list/viewMessages/{id}', function (Request $request, Response $respo
     return $c->getMessages($request,$response,$args);
 });
 
+$app->get('/list/addItem/{id}', function (Request $request, Response $response,array $args){
+    $c = new \wishlist\controller\Controller($this);
+    return $c->getFormItem($request,$response,$args);
+});
+
 /*
  * Methode POST pour récupérer les données du formulaire apres l'appui du bouton valider
  * et appel de la fonction resumeItem
  */
-$app->post('list/addItem',function(Request $request, Response $response, array $args){
+$app->post('/list/addItem/{id}',function(Request $request, Response $response, array $args){
     $c = new \wishlist\controller\Controller($this);
     return $c->resumeCreateItem($request,$response,$args);
 });

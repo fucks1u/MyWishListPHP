@@ -132,8 +132,8 @@ class Controller{
      * ------------------------------------------------------------
      */
     public function getFormItem($rq, $rs, $args){
-        //$list = Item::query('SELECT * FROM ITEM');
-        $v = new VueFormulaireItem();
+        //TODO verification createur
+        $v = new VueFormulaireItem($args['id']);
         $rs->getBody()->write($v->render());
         return $rs;
     }
