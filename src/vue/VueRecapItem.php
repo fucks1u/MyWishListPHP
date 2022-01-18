@@ -30,8 +30,13 @@ public function render() : mixed{
         <p><b>Nom:</b> $nom</p>
         <p><b>Prix:</b> $prix €</p>
         <p><b>Description:</b><br></br>$desc</p>
-        <input type="button" value="Retour" onclick="history.go(-2)">
         </div>
+        <input type="button" value="Retour à la liste" onclick="history.go(-2)">
+        <a href="/MyWishListPHP">
+        <input type="button" name="accueil">
+        </a>
+        
+        
     </body>
 </html>
 END;

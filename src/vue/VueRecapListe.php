@@ -32,7 +32,7 @@ class VueRecapListe{
         <p><b>Date d'expiration:</b> $date</p>
         <p><b>Description:</b><br></br><div class="desc">$desc</div></p>
         </div>
-        <div class=button>
+        <div class="button">
     <input type="button" value="Accueil" onclick="history.go(-2)">
     <input type="button" value="Copier URL" onclick="">
     </div>

@@ -14,7 +14,7 @@ class VueItem{
 
         $item = $this->array[0];
         $content = '<h1>' .$item->nom .'</h1>';
-        $desc = '<p>Description : ' .$item->descr .'</p>';
+        $desc = '<p>' .$item->descr .'</p>';
         $im = '<img src="' .$b .'/img/'.$item->img .'">';
 
         $html = <<<END
@@ -22,13 +22,16 @@ class VueItem{
  <head>
       <title>MyWishList</title>
       <meta charset="utf-8">
-      <link rel="stylesheet" href="../css/styleItem.css">
+      <link rel="stylesheet" href="../../css/styleItem.css">
     </head>
 <body>
+<h1>  $content </h1>
 <div class="content">
- $content
+<div class ="descr">
  $desc
+ </div>
  $im
+ 
  <br>
 </div>
 <br>
