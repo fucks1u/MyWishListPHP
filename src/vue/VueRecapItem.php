@@ -19,14 +19,18 @@ public function render() : mixed{
     <head>
         <title>Page de traitement</title>
         <meta charset="utf-8">
+        <link rel="stylesheet" href="../../css/styleRecapItem.css">
     </head>
     <body>
-        <h2>Dans le formulaire précédent, vous avez fourni les
-        informations suivantes :</h2>
+        <h1>Dans le formulaire précédent, vous avez fourni les
+        informations suivantes concernant l'item:</h1>
+
+        <div class="rectangle">
         
         <p><b>Nom : </b>$nom</p>
         <p><b>Prix : </b>$prix</p>
         <p><b>Description : </b>$desc</p>
+        </div>
     </body>
 </html>
 END;

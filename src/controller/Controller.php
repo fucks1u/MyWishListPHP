@@ -61,8 +61,13 @@ class Controller{
         $items = Item::where('liste_id', '=',$data['list_id'])->get();
         $v = new \wishlist\vue\VueListe([$list]);
         $v->setItems($items);
-        $rs->getBody()->write($v->render(1,$base));
-        return $rs;
+        if(empty($_COOKIE["participant_cookie"])){
+            $rs->getBody()->write($v->renderSansCookie());
+            echo(1);
+        } else {
+            $rs->getBody()->write($v->renderCookie());
+            echo(2);
+        }
     }
 
     public function createList($rq,$rs, $args){

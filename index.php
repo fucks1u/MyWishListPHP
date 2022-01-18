@@ -2,7 +2,7 @@
 
 use \Psr\Http\Message\ResponseInterface as Response;
 use \Psr\Http\Message\ServerRequestInterface as Request;
-use wishlist\vue\VueAcceuil;
+use wishlist\vue\VueAccueil;
 
 require __DIR__ .'/vendor/autoload.php'; //utilsation du chemin pour les require
 require __DIR__ .'/src/conf/conf.php';
@@ -110,8 +110,8 @@ $app->get('/listeItems/view/{id}', function (Request $request, Response $respons
  * page d'acceuil
  */
 $app->get('/', function (Request $request, Response $response, array $args) {
-    $vIndex = new \wishlist\vue\VueAcceuil();
-    $response->getBody()->write(VueAcceuil::render());
+    $vIndex = new \wishlist\vue\VueAccueil();
+    $response->getBody()->write(VueAccueil::render());
     return $response;
 });
 //poser question au prof pour le controleur, si il en faut que 1 ou alors dissocier

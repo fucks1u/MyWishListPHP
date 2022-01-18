@@ -1,5 +1,6 @@
 body {
     background: rgb(196, 50, 50);
+    text-align: center;
 }
 form {
 padding : 10px;
@@ -26,6 +27,8 @@ div[class=content]{
     background: #ffff;
     border-radius: 200px;
     text-align: center;
+    background-color: lightcyan;
+    margin : 0 20% 0 20%;
 }
 
 form[name=message] {
@@ -51,4 +54,8 @@ form[name=message]:active {
     background-color: #2a2828;
     box-shadow: 0 5px #666;
     transform: translateY(4px);
+}
+
+a{
+    text-align: left;
 }

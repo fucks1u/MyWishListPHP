@@ -24,7 +24,9 @@ class VueRecapListeInvalide{
         <p><b>Date:</b> doit etre remplie avec des <span class="check">nombres</span> comme par exemple <span class="solution"> 25/12/2022</span></p>
         <p><b>Description:</b><br></br>doit comporter du <span class="check">texte</span> pour décrire la liste comme par exemple :<br></br>  <span class="solution">
         Cette liste regroupe les Items de mes rêves! </span></p>
+        <input type="button" value="Retour" onclick="history.go(-1)">
         </div>
+        
     </body>
 </html>
 END;
