@@ -27,9 +27,10 @@ public function render() : mixed{
 
         <div class="rectangle">
         
-        <p><b>Nom : </b>$nom</p>
-        <p><b>Prix : </b>$prix</p>
-        <p><b>Description : </b>$desc</p>
+        <p><b>Nom:</b> $nom</p>
+        <p><b>Prix:</b> $prix €</p>
+        <p><b>Description:</b><br></br>$desc</p>
+        <input type="button" value="Retour" onclick="history.go(-2)">
         </div>
     </body>
 </html>

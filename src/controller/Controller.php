@@ -61,11 +61,13 @@ class Controller{
         $items = Item::where('liste_id', '=',$data['list_id'])->get();
         $v = new \wishlist\vue\VueListe([$list]);
         $v->setItems($items);
-        if(empty($_COOKIE["participant_cookie"])){
-            $rs->getBody()->write($v->renderSansCookie());
+        $l= $list[0];
+        $t= $l["token"];
+        if($_COOKIE["participant_cookie"]==$t){
+            $rs->getBody()->write($v->renderCookie());
             echo(1);
         } else {
-            $rs->getBody()->write($v->renderCookie());
+            $rs->getBody()->write($v->renderSansCookie());
             echo(2);
         }
     }
@@ -153,17 +155,19 @@ class Controller{
         $nom = $data['item_name'];
         $description = $data['item_description'];
         $tarif = $data['item_price'];
+        $id = $args['id'];
 
         //filtrage des données du post
         if(!filter_var($nom,FILTER_SANITIZE_STRING)||!filter_var($description
                 ,FILTER_SANITIZE_STRING)||!filter_var($tarif,FILTER_SANITIZE_NUMBER_INT))
         {
-            $v = new VueRecapInvalide($data);
+            $v = new VueRecapItemInvalide($data);
             $rs->getBody()->write($v->render());
         } else {
             //ajout dans la base de donnée
             try{
-                Item::insert(['nom'=>$nom,'descr'=>$description,'tarif'=>$tarif]);
+                Item::insert(['nom'=>$nom,'descr'=>$description, 'liste_id'=>$id,'tarif'=>$tarif]);
+
             } catch(PDOException $e){
                 throw new DBException('Ajout impossible : ' .$e->getMessage());
             }

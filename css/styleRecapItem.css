@@ -8,11 +8,19 @@ body{
     text-align: center;
     background-color: lightcyan;
     border: 2px solid blue;
-    width: 400px;
-    height: 300px;
+    width: 500px;
+    height: 400px;
     margin: 5% auto 0 auto;
     padding-left: 10px;
 }
+.button{
+    height:20px; 
+    width:400px; 
+    margin: -20px -50px; 
+    top:50%; 
+    left:42%;
+}
+
 h1 {
     background-color:  #aa2f2f;
     color: antiquewhite;
@@ -32,7 +40,7 @@ h1 {
      text-align: justify;
      line-height: 30px;
      font-size:larger;
-     width: 400px;
+     width: 450px;
  }
 
 input[type="button"]{
@@ -44,4 +52,18 @@ input[type="button"]{
      cursor: pointer;
      width: 40%;
      align-items: center;
+    
+     
  }
+ input[name=accueil]{
+    background-image: url("../img/_accueil.png") ;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: 0px 0px;
+    border: none;
+    margin-bottom: 10px;
+    height: 32px;
+    padding-left: 32px;
+    vertical-align: middle;
+}
+

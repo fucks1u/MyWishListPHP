@@ -20,7 +20,7 @@ class VueFormulaireItem{
     </head>
     <body>
     <div id="container">
- <form action="formlist" method="post">
+ <form action="$this->idListe" method="post">
    <h1>Création d'un Item dans la liste $this->idListe</h1>
 
         <label for="name"><b>Nom de l'Item :</b></label>

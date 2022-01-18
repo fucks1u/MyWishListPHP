@@ -12,13 +12,18 @@ class VueRecapItemInvalide{
     <head>
         <title>Page de traitement</title>
         <meta charset="utf-8">
+        <link rel="stylesheet" href="../../css/styleRecapItemInvalide.css">
     </head>
     <body>
-        <h2>Dans le formulaire précédent, vous avez fourni des informations invalides :</h2>
+        <h1>Dans le formulaire précédent, vous avez fourni des informations invalides :</h1>
+        <div class="fond"> 
         
-        <p>Nom : <b>Caramel</b>, doit etre du type texte => "Caramel"</p>
-        <p>Prix : <b>15</b></p>
-        <p>Description : <b>Description pour l'item Caramel</b></p>
+        <p><b>Nom:</b> Caramel, doit etre du type <span class="check">texte</span>=> <span class="solution">"Caramel"</span></p>
+        <p><b>Prix:</b> doit etre remplie avec des <span class="check">nombres</span> comme par exemple <span class="solution"> 14, 11 ou encore 7 </span></p>
+        <p><b>Description:</b><br></br>doit comporter du <span class="check">texte</span> pour décrire la liste comme par exemple :<br></br>  <span class="solution">
+        Cette liste regroupe les Items de mes rêves! </span></p>
+        <input type="button" value="Retour" onclick="history.go(-1)">
+        </div>
     </body>
 </html>
 END;
