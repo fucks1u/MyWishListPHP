@@ -21,6 +21,9 @@ class VueAccueil
     <a href="list" style="text-decoration:none">
         <input type="button" value="Afficher une liste">
     </a>
+    <a href="mylist" style="text-decoration:none">
+        <input type="button" value="Afficher mes listes">
+    </a>
     <a href="list/createList" style="text-decoration:none">
         <input type="button" value="Créer une liste">
     </a>
