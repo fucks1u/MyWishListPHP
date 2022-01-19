@@ -16,7 +16,7 @@ class VueFormulaireItem{
  <head>
       <title>Création Item</title>
       <meta charset="utf-8">
-      <link rel="stylesheet" href="../../css/styleItem.css">
+      <link rel="stylesheet" href="../../css/styleFormulaireItem.css">
     </head>
     <body>
     <div id="container">
@@ -30,6 +30,7 @@ class VueFormulaireItem{
         <input type="text" id="prixItem" name="item_price" placeholder="15">
 
         <label for="desc"><b>Description :</b></label>
+        <br></br>
         <textarea id="descItem" placeholder="Ceci est un exemple de description" 
         name="item_description"></textarea>
         

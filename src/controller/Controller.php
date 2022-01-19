@@ -8,7 +8,7 @@ use \Psr\Http\Message\ResponseInterface as Response;
 use \Psr\Http\Message\ServerRequestInterface as Request;
 use wishlist\modele\Liste;
 use wishlist\vue\VueFormulaireItem;
-use wishlist\vue\VueAjoutListe;
+use wishlist\vue\VueFormulaireListe;
 use wishlist\vue\VueListeItem;
 use wishlist\vue\VueMessages;
 use wishlist\vue\VueRecapItem;
@@ -43,7 +43,7 @@ class Controller{
      * -------------------------------------------------
      */
     public function getFormList($rq, $rs, $args){
-        $v = new VueAjoutListe();
+        $v = new VueFormulaireListe();
         $rs->getBody()->write($v->render());
         return $rs;
 }

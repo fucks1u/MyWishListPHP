@@ -35,6 +35,7 @@ class VueItem{
  <br>
 </div>
 <br>
+<form action="" method="post">
 <input type="button" value="Retour" onclick="history.go(-1)">
 </body></html>
 END ;

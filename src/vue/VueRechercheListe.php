@@ -10,7 +10,7 @@ class VueRechercheListe{
  <head>
       <title>MyWishList</title>
       <meta charset="utf-8">
-      <link rel="stylesheet" href="css/styleListe.css">
+      <link rel="stylesheet" href="css/styleRechercheListe.css">
     </head>
 <body>
     <a href="/MyWishListPHP">

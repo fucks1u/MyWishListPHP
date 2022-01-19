@@ -1,7 +1,7 @@
 <?php
 namespace wishlist\vue;
 
-class VueAjoutListe{
+class VueFormulaireListe{
 
     public function render() : string{
 
@@ -10,7 +10,7 @@ class VueAjoutListe{
  <head>
       <title>Création Liste</title>
       <meta charset="utf-8">
-      <link rel="stylesheet" href="../css/styleListe.css">
+      <link rel="stylesheet" href="../css/styleFormulaireListe.css">
     </head>
     <body>
         <a href="/MyWishListPHP">
