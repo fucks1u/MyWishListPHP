@@ -4,10 +4,13 @@ namespace wishlist\vue;
 
 class VueRecapListe{
     private array $array;
+    private $id;
 
-    public function __construct(array $a){
+    public function __construct(array $a,$i){
         $this->array = $a;
+        $this->id = $i;
     }
+
 
     public function render() : mixed{
         $titre = $this->array['list_title'];
@@ -29,6 +32,7 @@ class VueRecapListe{
         <div class="fond">
         
         <p><b>Titre:</b> $titre</p>
+        <p><b>Numéro de la liste :</b> $this->id</p>
         <p><b>Date d'expiration:</b> $date</p>
         <p><b>Description:</b><br></br><div class="desc">$desc</div></p>
         </div>

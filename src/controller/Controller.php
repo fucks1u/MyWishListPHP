@@ -87,23 +87,17 @@ class Controller{
             //ajout dans la base de donnée
             try{
                 Liste::insert(['titre'=>$titre,'description'=>$desc,'expiration'=>$date,'token'=>$_COOKIE['participant_cookie']]);
+                $list = Liste::where('titre', '=',$titre)->first();
             } catch(PDOException $e){
                 throw new DBException('Ajout impossible : ' .$e->getMessage());
             }
             //création de la vue racapitulative
-            $v = new VueRecapListe($data);
+            $v = new VueRecapListe($data, $id = $list['no']);
             $rs->getBody()->write($v->render());
         }
         return $rs;
     }
 
-
-    public function getListItem($rq, $rs, $args){
-        $list = Liste::where('no', '=',$args['id'])->with('items')->first();
-        $v = new \wishlist\vue\VueListe([$list]);
-        $rs->getBody()->write($v->render(2));
-        return $rs;
-    }
 
     public function getMessageList($rq, $rs, $args){
         $v = new \wishlist\vue\VueAjoutMessage($args);
