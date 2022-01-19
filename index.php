@@ -29,6 +29,11 @@ $app->post('/list/view', function (Request $request, Response $response,array $a
     return $c->getList($request,$response,$args);
 });
 
+$app->get('/list/recap/{list}/', function (Request $request, Response $response,array $args){
+    $c = new \wishlist\controller\Controller($this);
+    return $c->recap($request,$response,$args);
+})->setName('list_recap');
+
 $app->post('list/view/message', function (Request $request, Response $response,array $args){
     $c = new \wishlist\controller\Controller($this);
     return $c->getMessageList($request,$response,$args);

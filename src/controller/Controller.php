@@ -91,11 +91,22 @@ class Controller{
             } catch(PDOException $e){
                 throw new DBException('Ajout impossible : ' .$e->getMessage());
             }
-            //création de la vue racapitulative
-            $v = new VueRecapListe($data, $id = $list['no']);
-            $rs->getBody()->write($v->render());
+
+            return $rs->withRedirect($this->container->router->pathFor('list_recap', ['list' => $list->no]));
         }
         return $rs;
+    }
+
+    public function recap($rq, $rs, $args){
+            //création de la vue racapitulative
+            $list = Liste::where('no', '=', $args['list'])->first();
+            $data = array(
+                'list_title' => $list->titre,
+                'list_date' => $list->expiration,
+                'list_description' => $list->description,
+            );
+            $v = new VueRecapListe($data, $id = $list['no']);
+            $rs->getBody()->write($v->render());
     }
 
 
