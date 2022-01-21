@@ -29,17 +29,9 @@ $app->post('/list/view', function (Request $request, Response $response,array $a
     return $c->getList($request,$response,$args);
 });
 
-$app->get('/list/recap/{list}/', function (Request $request, Response $response,array $args){
-    $c = new \wishlist\controller\Controller($this);
-    return $c->recap($request,$response,$args);
-})->setName('list_recap');
-
-$app->post('list/view/message', function (Request $request, Response $response,array $args){
-    $c = new \wishlist\controller\Controller($this);
-    return $c->getMessageList($request,$response,$args);
-});
-
-
+/*
+ * ici
+ */
 $app->get('/list/createList', function (Request $request, Response $response,array $args){
     $c = new \wishlist\controller\Controller($this);
     return $c->getFormList($request,$response,$args);
@@ -49,6 +41,36 @@ $app->post('/list/createList', function (Request $request, Response $response,ar
     $c = new \wishlist\controller\Controller($this);
     return $c->createList($request,$response,$args);
 });
+
+$app->get('/list/recap/{list}/', function (Request $request, Response $response,array $args){
+    $c = new \wishlist\controller\Controller($this);
+    return $c->recap($request,$response,$args);
+})->setName('list_recap');
+
+/*
+ * ajout item
+ */
+$app->get('/list/addItem/{id}', function (Request $request, Response $response,array $args){
+    $c = new \wishlist\controller\Controller($this);
+    return $c->getFormItem($request,$response,$args);
+});
+
+$app->post('/list/addItem/{id}',function(Request $request, Response $response, array $args){
+    $c = new \wishlist\controller\Controller($this);
+    return $c->createItem($request,$response,$args);
+});
+
+$app->get('/list/recapItem/{item}', function (Request $request, Response $response,array $args){
+    $c = new \wishlist\controller\Controller($this);
+    return $c->recapItem($request,$response,$args);
+})->setName('item_recap');
+
+
+$app->post('list/view/message', function (Request $request, Response $response,array $args){
+    $c = new \wishlist\controller\Controller($this);
+    return $c->getMessageList($request,$response,$args);
+});
+
 
 
 $app->get('/list/createMessage/{id}', function (Request $request, Response $response,array $args){
@@ -66,15 +88,6 @@ $app->get('/list/viewMessages/{id}', function (Request $request, Response $respo
     return $c->getMessages($request,$response,$args);
 });
 
-$app->get('/list/addItem/{id}/', function(Request $request, Response $response,array $args){
-    $c = new \wishlist\controller\Controller($this);
-    return $c->recapItem($request,$response,$args);
-})->setName('item_recap');
-
-/*
- * Methode POST pour récupérer les données du formulaire apres l'appui du bouton valider
- * et appel de la fonction resumeItem
- */
 
 /*
  * Items

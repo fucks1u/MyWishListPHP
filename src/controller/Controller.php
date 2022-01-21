@@ -42,12 +42,6 @@ class Controller{
      * - Methodes pour la gestion et creation de Liste -
      * -------------------------------------------------
      */
-    public function getFormList($rq, $rs, $args){
-        $v = new VueFormulaireListe();
-        $rs->getBody()->write($v->render());
-        return $rs;
-}
-
     public function getFormListId($rq, $rs, $args){
         $v = new VueRechercheListe();
         $rs->getBody()->write($v->render());
@@ -65,11 +59,15 @@ class Controller{
         $t= $l["token"];
         if($_COOKIE["participant_cookie"]==$t){
             $rs->getBody()->write($v->renderCookie());
-            echo(1);
         } else {
             $rs->getBody()->write($v->renderSansCookie());
-            echo(2);
         }
+    }
+
+    public function getFormList($rq, $rs, $args){
+        $v = new VueFormulaireListe();
+        $rs->getBody()->write($v->render());
+        return $rs;
     }
 
     public function createList($rq,$rs, $args){
@@ -144,7 +142,6 @@ class Controller{
      * ------------------------------------------------------------
      */
     public function getFormItem($rq, $rs, $args){
-        //TODO verification createur
         $v = new VueFormulaireItem($args['id']);
         $rs->getBody()->write($v->render());
         return $rs;
@@ -154,7 +151,7 @@ class Controller{
      * Methode permettant de recuperer les données présentes dans le formulaire
      * et egalement l'afficher sur une page annexe
      */
-    public function resumeCreateItem($rq, $rs, $args){
+    public function createItem($rq, $rs, $args){
         //récupération des données du post
         $data = $rq->getParsedBody();
         $nom = $data['item_name'];
@@ -172,19 +169,18 @@ class Controller{
             //ajout dans la base de donnée
             try{
                 Item::insert(['nom'=>$nom,'descr'=>$description, 'liste_id'=>$id,'tarif'=>$tarif]);
-
+                $item = Item::where('nom', '=',$nom)->first();
             } catch(PDOException $e){
                 throw new DBException('Ajout impossible : ' .$e->getMessage());
             }
              return $rs->withRedirect($this->container->router->pathFor('item_recap', ['item' => $item->id]));
-
         }
         return $rs;
     }
 
     public function recapItem($rq, $rs, $args){
         //création de la vue racapitulative
-        $item = Liste::where('id', '=', $args['item'])->first();
+        $item = Item::where('id', '=', $args['item'])->first();
         $data = array (
             'item_name'=> $item->nom,
             'item_description'=>$item->descr,
