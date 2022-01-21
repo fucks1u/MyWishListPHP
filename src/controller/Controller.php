@@ -176,13 +176,24 @@ class Controller{
             } catch(PDOException $e){
                 throw new DBException('Ajout impossible : ' .$e->getMessage());
             }
-            //création de la vue racapitulative
-            $v = new VueRecapItem($data);
-            $rs->getBody()->write($v->render());
+             return $rs->withRedirect($this->container->router->pathFor('item_recap', ['item' => $item->id]));
 
         }
         return $rs;
     }
+
+    public function recapItem($rq, $rs, $args){
+        //création de la vue racapitulative
+        $item = Liste::where('id', '=', $args['item'])->first();
+        $data = array (
+            'item_name'=> $item->nom,
+            'item_description'=>$item->descr,
+            'item_price'=>$item->tarif,
+        );
+            $v = new VueRecapItem($data);
+            $rs->getBody()->write($v->render());
+
+    } 
 
     public function verifCookie(){
         if($_COOKIE["participant_cookie"] == null){

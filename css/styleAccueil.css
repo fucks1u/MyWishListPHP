@@ -12,6 +12,7 @@ form {
 h1{
     background: #fff;
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+    color: #c23636;
     text-align: center;
     width: 50%;
     padding: 1em;
@@ -71,4 +72,19 @@ input:active {
     background-color: #872323;
     box-shadow: 0 5px #666;
     transform: translateY(4px);
+}
+
+p{
+    margin-top: 30%;
+    padding-top: 10px;
+    text-align: center;
+    color: #fff;
+    font-size: larger;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #c23636;
+    width: 900px;
+    height: 200px;
+    border: #FFF solid 10px;
+    margin: 0 auto 0 auto;
+   
 }

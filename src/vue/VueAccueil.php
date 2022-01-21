@@ -12,7 +12,7 @@ class VueAccueil
  <head>
       <title>MyWishList</title>
       <meta charset="utf-8">
-      <link rel="stylesheet" href="css/styleIndex.css">
+      <link rel="stylesheet" href="css/styleAccueil.css">
     </head>
 <body>
 
@@ -28,6 +28,12 @@ class VueAccueil
         <input type="button" value="Créer une liste">
     </a>
 </form>
+<br></br>
+<br></br>
+<p> Bienvenue sur MyWishList , sur ce site vous avez la possibilité de créer la liste de souhaits regroupant toutes vos envies.<br></br> 
+Vous pouvez notamment consulter les listes publiques si vous avez besoins d'inspirations où pour y reserver un item de cette liste, <br> </br> en 
+vous souhaitant une bonne Experience sur notre site </p>
+
 </body>
 </html>
 END;

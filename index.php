@@ -66,19 +66,15 @@ $app->get('/list/viewMessages/{id}', function (Request $request, Response $respo
     return $c->getMessages($request,$response,$args);
 });
 
-$app->get('/list/addItem/{id}', function (Request $request, Response $response,array $args){
+$app->get('/list/addItem/{id}/', function(Request $request, Response $response,array $args){
     $c = new \wishlist\controller\Controller($this);
-    return $c->getFormItem($request,$response,$args);
-});
+    return $c->recapItem($request,$response,$args);
+})->setName('item_recap');
 
 /*
  * Methode POST pour récupérer les données du formulaire apres l'appui du bouton valider
  * et appel de la fonction resumeItem
  */
-$app->post('/list/addItem/{id}',function(Request $request, Response $response, array $args){
-    $c = new \wishlist\controller\Controller($this);
-    return $c->resumeCreateItem($request,$response,$args);
-});
 
 /*
  * Items
