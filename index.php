@@ -29,6 +29,24 @@ $app->post('/list/view', function (Request $request, Response $response,array $a
     return $c->getList($request,$response,$args);
 });
 
+$app->get('/list/view/{id}', function (Request $request, Response $response,array $args){
+    $c = new \wishlist\controller\Controller($this);
+    return $c->getListId($request,$response,$args);
+});
+
+/*
+ * Partie reservation des items
+ */
+$app->get('/list/reserve/{id}', function (Request $request, Response $response,array $args){
+    $c = new \wishlist\controller\Controller($this);
+    return $c->reservationItem($request,$response,$args);
+});
+
+$app->get('/list/reserved/{id}', function (Request $request, Response $response,array $args){
+    $c = new \wishlist\controller\Controller($this);
+    return $c->getItem($request,$response,$args);
+})->setName('item_recap');
+
 /*
  * ici
  */
@@ -122,8 +140,6 @@ $app->get('/listeItems/view/{id}', function (Request $request, Response $respons
 
 
 
-
-
 /*
  * page d'acceuil
  */
@@ -132,12 +148,6 @@ $app->get('/', function (Request $request, Response $response, array $args) {
     $response->getBody()->write(VueAccueil::render());
     return $response;
 });
-//poser question au prof pour le controleur, si il en faut que 1 ou alors dissocier
-$app->post('/',function(Request $request, Response $response, array $args){
-    $c = new \wishlist\controller\Controller($this);
-    return $c->resumeCreateItem($request,$response,$args);
-});
-
 
 $app->run();
 

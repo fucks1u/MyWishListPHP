@@ -21,15 +21,15 @@ class VueListe{
             $liste = $this->array[0];
             foreach($liste as $value){
                 $idlist = $value->no;
-                $content = $content ."\n" .'<h1>' .$value->titre .'</h1>';
-                $content = $content ."\n" .'<h2>' .$value->description .'</h2>';
+                $content = $content ."\n" .'<h1><u>' .$value->titre .'</u></h1>';
+                $content = $content ."\n" .'<h1>' .$value->description .'</h1>';
                 $content = $content ."\n" .'<p>Attention la liste expire le : ' .$value->expiration .'</p>';
                 $content = $content ."\n" .'<p>Voici la liste des items présent dans la liste : </p>';
             }
             foreach ($this->items as $v) {
                 $iditem = $v['id'];
                 $nomitem = $v['nom'];
-                $items = $items .'<form action="item/' .$iditem .'">
+                $items = $items .'<form action="' .$iditem .'">
                  <button type="submit">' .$nomitem .'</button>
                 </form>';
             }

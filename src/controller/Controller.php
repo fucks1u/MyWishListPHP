@@ -7,6 +7,7 @@ use wishlist\modele\Item;
 use \Psr\Http\Message\ResponseInterface as Response;
 use \Psr\Http\Message\ServerRequestInterface as Request;
 use wishlist\modele\Liste;
+use wishlist\modele\Reservation;
 use wishlist\vue\VueFormulaireItem;
 use wishlist\vue\VueFormulaireListe;
 use wishlist\vue\VueListeItem;
@@ -33,7 +34,13 @@ class Controller{
         $base = $rq->getUri()->getBasePath();
         $id = $args['id'];
         $item = Item::where('id','=',$args['id'])->first();
+        $res = Reservation::where('id_item','=',$item->id)->first();
         $v = new \wishlist\vue\VueItem([$item]);
+        if($res == null){
+            $v->setReservation(false);
+        } else {
+            $v->setReservation(true);
+        }
         $rs->getBody()->write($v->render($base));
         return $rs;
     }
@@ -65,15 +72,40 @@ class Controller{
         }
     }
 
+
+    public function reservationItem($rq, $rs, $args){
+        $iditem = $args['id'];
+        $item = Item::where('id','=',$iditem)->get();
+        $i = $item[0];
+        $idlist = $i->liste_id;
+        Reservation::insert(['id_list'=>$idlist,'id_item'=>$iditem,'token'=>$_COOKIE["participant_cookie"]]);
+        return $rs->withRedirect($this->container->router->pathFor('item_recap', ['id' => $iditem]));
+    }
+
+
+
+    public function getListId($rq, $rs, $args){
+        $id = $args['id'];
+        $list = Liste::where('no', '=',$id)->get();
+        $items = Item::where('liste_id', '=',$id)->get();
+        $v = new \wishlist\vue\VueListeParticipant([$list]);
+        $v->setItems($items);
+        $rs->getBody()->write($v->renderCookie());
+        return $rs;
+    }
+
     public function getMyList($rq, $rs, $args){
         $token = $_COOKIE["participant_cookie"];
         if($token == null){
             //ajouter une vue quand il n'y pas de liste
+            $v = new VueMesListes();
+            $rs->getBody()->write($v->renderVide());
         } else {
             $list = Liste::where('token', '=',$token)->get();
-            $v = new VueMesListes([$list]);
+            $v = new VueMesListes();
+            $v->setList([$list]);
+            $rs->getBody()->write($v->render());
         }
-        $rs->getBody()->write($v->render());
         return $rs;
     }
 
@@ -210,8 +242,6 @@ class Controller{
             setcookie("participant_cookie",$token);
         }
     }
-// filtrer les données remplies dans les champs
-    //ajouter les données dans la base de donnée (a faire)
 
 
 
