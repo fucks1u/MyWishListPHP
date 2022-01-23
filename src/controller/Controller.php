@@ -70,7 +70,13 @@ class Controller{
         $items = Item::where('liste_id', '=',$id)->get();
         $v = new \wishlist\vue\VueListeParticipant([$list]);
         $v->setItems($items);
-        $rs->getBody()->write($v->renderCookie());
+        if($_COOKIE["participant_cookie"]){
+            $rs->getBody()->write($v->renderMesListes());
+        } else{
+            $rs->getBody()->write($v->renderCookie());
+        }
+
+
         return $rs;
     }
 
@@ -224,7 +230,6 @@ class Controller{
      * Vuez recapitulative apres la creation d'un item
      */
     public function recapItem($rq, $rs, $args){
-        //création de la vue racapitulative
         $item = Item::where('id', '=', $args['item'])->first();
         $data = array (
             'item_name'=> $item->nom,
