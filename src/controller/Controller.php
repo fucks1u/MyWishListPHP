@@ -114,7 +114,11 @@ class Controller{
     */
     public function getListToken($rq, $rs, $args){
         $list = Liste::where('token_partage','=',$args['token'])->get();
+        $l = $list[0];
+        $id = $l->no;
+        $items = Item::where('liste_id','=',$id)->get();
             $v = new VueTokenPartage([$list]);
+            $v->setItems($items);
             $rs->getBody()->write($v->render());
             return $rs;
         }
