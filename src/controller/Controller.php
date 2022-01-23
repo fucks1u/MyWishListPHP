@@ -275,7 +275,7 @@ class Controller{
      */
     public function getMessages($rq, $rs, $args){
         $id = $args['id'];
-        $mess = Message::where('id_liste', '=',$id)->get();
+        $mess = Message::where('id_list', '=',$id)->get();
         $v = new \wishlist\vue\VueMessages([$mess]);
         $rs->getBody()->write($v->render());
         return $rs;
@@ -288,7 +288,7 @@ class Controller{
         $data = $rq->getParsedBody();
         $token = $_COOKIE['participant_cookie'];
         try{
-            Message::insert(['id_liste'=>$args['id'],'message'=>$data['message'],'token'=>$token]);
+            Message::insert(['id_list'=>$args['id'],'message'=>$data['message'],'token'=>$token]);
         } catch(PDOException $e){
             throw new DBException('Ajout impossible : ' .$e->getMessage());
         }
