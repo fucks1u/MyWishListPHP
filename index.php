@@ -37,6 +37,12 @@ $app->get('/list/recap/{list}/', function (Request $request, Response $response,
     return $c->recap($request,$response,$args);
 })->setName('list_recap');
 
+$app->get('/list/token/{token}', function (Request $request, Response $response,array $args){
+    $c = new \wishlist\controller\Controller($this);
+    return $c->getListToken($request,$response,$args);
+});
+
+
 /*
  * Chemin menant aux listes creer par le participant
  */
