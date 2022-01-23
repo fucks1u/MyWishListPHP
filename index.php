@@ -52,6 +52,10 @@ $app->get('/list', function (Request $request, Response $response,array $args){
     return $c->getFormListId($request,$response,$args);
 });
 
+$app->get('/list/view/{id}', function (Request $request, Response $response,array $args){
+    $c = new \wishlist\controller\Controller($this);
+    return $c->getListId($request,$response,$args);
+});
 /*
  * Chemin pour afficher une liste avec un id donnee suite a clic du bouton submit du formulaire
  */
