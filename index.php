@@ -140,10 +140,11 @@ $app->get('/list/reserve/{id}', function (Request $request, Response $response,a
     $c = new \wishlist\controller\Controller($this);
     return $c->reservationItem($request,$response,$args);
 });
+
 $app->get('/list/reserved/{id}', function (Request $request, Response $response,array $args){
     $c = new \wishlist\controller\Controller($this);
     return $c->getItem($request,$response,$args);
-})->setName('item_recap');
+})->setName('reserv');
 
 
 

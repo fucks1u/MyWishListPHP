@@ -177,7 +177,7 @@ class Controller{
         $i = $item[0];
         $idlist = $i->liste_id;
         Reservation::insert(['id_list'=>$idlist,'id_item'=>$iditem,'token'=>$_COOKIE["participant_cookie"]]);
-        return $rs->withRedirect($this->container->router->pathFor('item_recap', ['id' => $iditem]));
+        return $rs->withRedirect($this->container->router->pathFor('reserv', ['id' => $iditem]));
     }
 
     /*
