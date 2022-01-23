@@ -38,7 +38,6 @@ class VueRecapListe{
         </div>
         <div class="button">
     <input type="button" value="Accueil" onclick="history.go(-2)">
-    <input type="button" value="Copier URL" onclick="">
     </div>
     </body>
 </html>
