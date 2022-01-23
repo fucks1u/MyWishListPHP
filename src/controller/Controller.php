@@ -137,7 +137,8 @@ class Controller{
         } else {
             //ajout dans la base de donnée
             try{
-                Liste::insert(['titre'=>$titre,'description'=>$desc,'expiration'=>$date,'token'=>$_COOKIE['participant_cookie']]);
+                $token_partage = base_convert(hash('sha256', time() . mt_rand()), 16, 36);
+                Liste::insert(['titre'=>$titre,'description'=>$desc,'expiration'=>$date,'token'=>$_COOKIE['participant_cookie'],'token_partage'=>$token_partage]);
                 $list = Liste::where('titre', '=',$titre)->first();
             } catch(PDOException $e){
                 throw new DBException('Ajout impossible : ' .$e->getMessage());
@@ -159,9 +160,9 @@ class Controller{
             'list_title' => $list->titre,
             'list_date' => $list->expiration,
             'list_description' => $list->description,
-            'list_token_partage'=> $token
         );
-        $v = new VueRecapListe($data, $id = $list['no']);
+        $v = new VueRecapListe($data,$list['no']);
+        $v->setToken($token);
         $rs->getBody()->write($v->render());
     }
 

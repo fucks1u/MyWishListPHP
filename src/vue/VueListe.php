@@ -20,10 +20,11 @@ class VueListe{
         $idlist='';
             $liste = $this->array[0];
             foreach($liste as $value){
-                $idlist = $value->no;
                 $content = $content ."\n" .'<h1><u>' .$value->titre .'</u></h1>';
                 $content = $content ."\n" .'<h1>' .$value->description .'</h1>';
+                $content = $content ."\n" .'<p>L\'id de la liste est : ' .$value->no .'</p>';
                 $content = $content ."\n" .'<p>Attention la liste expire le : ' .$value->expiration .'</p>';
+                $content = $content ."\n" .'<p>Token de partage :' .$value->token_partage .'</p>';
                 $content = $content ."\n" .'<p>Voici la liste des items présent dans la liste : </p>';
             }
             foreach ($this->items as $v) {

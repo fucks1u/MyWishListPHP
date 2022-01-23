@@ -5,10 +5,15 @@ namespace wishlist\vue;
 class VueRecapListe{
     private array $array;
     private $id;
+    private $token;
 
     public function __construct(array $a,$i){
         $this->array = $a;
         $this->id = $i;
+    }
+
+    public function setToken($t){
+        $this->token = $t;
     }
 
 
@@ -16,7 +21,6 @@ class VueRecapListe{
         $titre = $this->array['list_title'];
         $date = $this->array['list_date'];
         $desc = $this->array['list_description'];
-        $tokenPartage= $this->array['list_token_partage'];
         $html = <<<END
 <!DOCTYPE html> 
 <html>
@@ -36,7 +40,7 @@ class VueRecapListe{
         <p><b>Numéro de la liste :</b> $this->id</p>
         <p><b>Date d'expiration:</b> $date</p>
         <p><b>Description:</b><br></br><div class="desc">$desc</div></p>
-        <p><b>Lien partage:</b><br></br><div class="desc">$tokenPartage</div></p>
+        <p><b>Lien partage:</b><br></br><div class="desc">$this->token</div></p>
 
         </div>
         <div class="button">
