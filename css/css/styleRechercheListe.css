@@ -1,0 +1,94 @@
+body{
+    background: rgb(196, 50, 50);
+}
+#container{
+    width:400px;
+    margin:0 auto 0 auto;
+    margin-top:10%;
+}
+
+#container h1{
+
+    margin: 0 auto;
+    padding-bottom: 10px;
+    text-align: center;
+}
+
+input[name=accueil]{
+    background-image: url("../img/_accueil.png") ;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: 0px 0px;
+    border: none;
+    margin-bottom: 10px;
+    height: 32px;
+    padding-left: 32px;
+    vertical-align: middle;
+}
+
+input[name=accueil]:hover {
+    background-image: url("../img/_accueil.png") ;
+    background-repeat: no-repeat;
+    border: none;
+    margin-bottom: 10px;
+    height: 32px;
+    padding-left: 32px;
+}
+
+form {
+    width:95%;
+    padding: 30px;
+    border: 1px solid #f1f1f1;
+    background: #fff;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+
+
+
+input[type=text] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+input[type=submit] {
+    background-color: #aa2f2f;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+input[type=submit]:hover {
+    background-color: white;
+    color: #53af57;
+    border: 1px solid #aa2f2f;
+}
+
+textarea[name=list_description]{
+    display: block;
+    margin-top: 10px;
+    width: 395px;
+    height: 50px;
+}
+
+textarea[name=message]{
+    display: block;
+    margin-top: 10px;
+    width: 395px;
+    height: 50px;
+}
+
+input[type=date] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
