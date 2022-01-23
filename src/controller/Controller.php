@@ -18,6 +18,7 @@ use wishlist\vue\VueRecapListeInvalide;
 use wishlist\vue\VueRecapItemInvalide;
 use wishlist\vue\VueRecapListe;
 use wishlist\vue\VueRechercheListe;
+use wishlist\vue\VueTokenPartage;
 use wishlist\modele\Message;
 
 class Controller{
@@ -106,6 +107,18 @@ class Controller{
         $rs->getBody()->write($v->render());
         return $rs;
     }
+    
+
+    /*
+    * Methode qui retourne une liste pour le token partage 
+    */
+    public function getListToken($rq, $rs, $args){
+        $list = Liste::where('token_partage','=',$args['token'])->get();
+            $v = new VueTokenPartage([$list]);
+            $rs->getBody()->write($v->render());
+            return $rs;
+        }
+    
 
     /*
      * Methode qui creer une liste grace aux donnees fournis dans le formulaire
@@ -141,10 +154,12 @@ class Controller{
     public function recap($rq, $rs, $args){
         //création de la vue racapitulative
         $list = Liste::where('no', '=', $args['list'])->first();
+        $token = $list['token_partage'];
         $data = array(
             'list_title' => $list->titre,
             'list_date' => $list->expiration,
             'list_description' => $list->description,
+            'list_token_partage'=> $token
         );
         $v = new VueRecapListe($data, $id = $list['no']);
         $rs->getBody()->write($v->render());

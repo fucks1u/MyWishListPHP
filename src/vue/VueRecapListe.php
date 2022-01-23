@@ -16,6 +16,7 @@ class VueRecapListe{
         $titre = $this->array['list_title'];
         $date = $this->array['list_date'];
         $desc = $this->array['list_description'];
+        $tokenPartage= $this->array['list_token_partage'];
         $html = <<<END
 <!DOCTYPE html> 
 <html>
@@ -35,6 +36,8 @@ class VueRecapListe{
         <p><b>Numéro de la liste :</b> $this->id</p>
         <p><b>Date d'expiration:</b> $date</p>
         <p><b>Description:</b><br></br><div class="desc">$desc</div></p>
+        <p><b>Lien partage:</b><br></br><div class="desc">$tokenPartage</div></p>
+
         </div>
         <div class="button">
     <input type="button" value="Accueil" onclick="history.go(-2)">
