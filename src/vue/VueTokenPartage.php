@@ -36,7 +36,7 @@ class VueTokenPartage{
     <head>
         <title>Recapitulatif liste</title>
         <meta charset="utf-8">
-        <link rel="stylesheet" href="../css/styleTokenPartage.css">
+        <link rel="stylesheet" href="../../css/styleTokenPartage.css">
     </head>
     <body>
 
