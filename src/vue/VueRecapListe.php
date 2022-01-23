@@ -40,7 +40,7 @@ class VueRecapListe{
         <p><b>Numéro de la liste :</b> $this->id</p>
         <p><b>Date d'expiration:</b> $date</p>
         <p><b>Description:</b><br></br><div class="desc">$desc</div></p>
-        <p><b>Lien partage:</b><br></br><div class="desc">$this->token</div></p>
+        <p><b>token partage:</b><br></br><div class="desc">$this->token</div></p>
 
         </div>
         <div class="button">
