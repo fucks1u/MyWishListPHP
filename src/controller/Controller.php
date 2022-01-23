@@ -10,6 +10,7 @@ use wishlist\modele\Liste;
 use wishlist\vue\VueFormulaireItem;
 use wishlist\vue\VueFormulaireListe;
 use wishlist\vue\VueListeItem;
+use wishlist\vue\VueMesListes;
 use wishlist\vue\VueMessages;
 use wishlist\vue\VueRecapItem;
 use wishlist\vue\VueRecapListeInvalide;
@@ -62,6 +63,18 @@ class Controller{
         } else {
             $rs->getBody()->write($v->renderSansCookie());
         }
+    }
+
+    public function getMyList($rq, $rs, $args){
+        $token = $_COOKIE["participant_cookie"];
+        if($token == null){
+            //ajouter une vue quand il n'y pas de liste
+        } else {
+            $list = Liste::where('token', '=',$token)->get();
+            $v = new VueMesListes([$list]);
+        }
+        $rs->getBody()->write($v->render());
+        return $rs;
     }
 
     public function getFormList($rq, $rs, $args){

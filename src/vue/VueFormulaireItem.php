@@ -33,7 +33,7 @@ class VueFormulaireItem{
         <br></br>
         <textarea id="descItem" placeholder="Ceci est un exemple de description" 
         name="item_description"></textarea>
-        
+       
         <input type="submit" id='submit' value="Créer l'item">
     
 </form>

@@ -72,7 +72,6 @@ $app->post('list/view/message', function (Request $request, Response $response,a
 });
 
 
-
 $app->get('/list/createMessage/{id}', function (Request $request, Response $response,array $args){
     $c = new \wishlist\controller\Controller($this);
     return $c->getMessageList($request,$response,$args);
@@ -86,6 +85,11 @@ $app->post('/list/createMessage/{id}', function (Request $request, Response $res
 $app->get('/list/viewMessages/{id}', function (Request $request, Response $response,array $args){
     $c = new \wishlist\controller\Controller($this);
     return $c->getMessages($request,$response,$args);
+});
+
+$app->get('/list/mylist', function (Request $request, Response $response,array $args){
+    $c = new \wishlist\controller\Controller($this);
+    return $c->getMyList($request,$response,$args);
 });
 
 
