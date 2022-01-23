@@ -95,14 +95,16 @@ $app->get('/list/createMessage/{id}', function (Request $request, Response $resp
     return $c->getMessageList($request,$response,$args);
 });
 
-$app->post('/list/createMessage/{id}', function (Request $request, Response $response,array $args){
-    $c = new \wishlist\controller\Controller($this);
-    return $c->getMessageRecap($request,$response,$args);
-});
+
 
 $app->get('/list/viewMessages/{id}', function (Request $request, Response $response,array $args){
     $c = new \wishlist\controller\Controller($this);
     return $c->getMessages($request,$response,$args);
+});
+
+$app->post('/list/createMessage/{id}', function (Request $request, Response $response,array $args){
+    $c = new \wishlist\controller\Controller($this);
+    return $c->getMessageRecap($request,$response,$args);
 });
 
 $app->get('/list/mylist', function (Request $request, Response $response,array $args){
@@ -121,15 +123,6 @@ $app->get('/list/item/{id}', function (Request $request, Response $response, arr
 });
 
 
-
-/*
- * nouveauté
- */
-//$app->get('list/vi', function (Request $request, Response $response,array $args){
-//    $c = new \wishlist\controller\Controller($this);
-//    return $c->getFormItem($request,$response,$args);
-//});
-
 /*
  * Liste et Items
  */
@@ -144,7 +137,6 @@ $app->get('/listeItems/view/{id}', function (Request $request, Response $respons
  * page d'acceuil
  */
 $app->get('/', function (Request $request, Response $response, array $args) {
-    $vIndex = new \wishlist\vue\VueAccueil();
     $response->getBody()->write(VueAccueil::render());
     return $response;
 });

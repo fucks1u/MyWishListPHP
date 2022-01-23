@@ -239,7 +239,7 @@ class Controller{
     public function verifCookie(){
         if($_COOKIE["participant_cookie"] == null){
             $token = base_convert(hash('sha256', time() . mt_rand()), 16, 36);
-            setcookie("participant_cookie",$token);
+            setcookie("participant_cookie",$token,time()+60*60*24*30);
         }
     }
 
